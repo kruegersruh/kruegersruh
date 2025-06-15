@@ -1,0 +1,67 @@
+---
+import config from "@/config/config.json";
+import Base from "@/layouts/Base.astro";
+import PageHeader from "@/partials/PageHeader.astro";
+import { getEntry } from "astro:content";
+import type { CollectionEntry } from "astro:content";
+
+const COLLECTION_FOLDER = "pages";
+const _ = (await getEntry(COLLECTION_FOLDER, "kontakt")) as CollectionEntry<"pages">;
+const { contact_form_action }: { contact_form_action: string } = config.params;
+const { title, description, meta_title, image } = _.data;
+---
+
+<Base
+  title={title}
+  meta_title={meta_title}
+  description={description}
+  image={image}
+>
+  <PageHeader title={title} />
+  <section class="section-sm">
+    <div class="container">
+      <div class="row">
+        <div class="mx-auto md:col-10 lg:col-6">
+          <form action={contact_form_action} method="POST">
+            <div class="mb-6">
+              <label for="name" class="form-label">
+                Name <span class="text-red-500">*</span>
+              </label>
+              <input
+                id="name"
+                name="name"
+                class="form-input"
+                placeholder="Vorname Nachname"
+                type="text"
+              />
+            </div>
+            <div class="mb-6">
+              <label for="email" class="form-label">
+                E-Mail-Adresse <span class="text-red-500">*</span>
+              </label>
+              <input
+                id="email"
+                name="email"
+                class="form-input"
+                placeholder="vorname.nachname@email.com"
+                type="email"
+              />
+            </div>
+            <div class="mb-6">
+              <label for="message" class="form-label">
+                Nachricht <span class="text-red-500">*</span>
+              </label>
+              <textarea
+                id="message"
+                name="message"
+                class="form-input"
+                placeholder="Message goes here..."
+                rows="8"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Senden</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+</Base>

@@ -1,0 +1,64 @@
+{
+  "main": [
+    {
+      "name": "Home",
+      "url": "/"
+    },
+    {
+      "name": "Über uns",
+      "url": "",
+	  "hasChildren": true,
+      "children": [
+        {
+          "name": "Verein",
+          "url": "/verein"
+        },
+		{
+		  "name": "Vorstand",
+		  "url": "/vorstand"
+		},
+		{
+          "name": "Stromgesellschaft",
+          "url": "/stromgesellschaft"
+        }
+      ]
+    },
+	{
+      "name": "Freie Gärten",
+      "url": "/freiegaerten"
+    },
+    {
+      "name": "Veranstaltungen",
+      "url": "",
+	  "hasChildren": true,
+      "children": [
+        {
+          "name": "Termine",
+          "url": "/termine"
+        },
+		{
+          "name": "Gemeinschaftsarbeit",
+          "url": "/gemeinschaftsarbeit"
+        },
+		{
+          "name": "Festausschuss",
+          "url": "/festausschuss"
+        }
+      ]
+    },
+	{
+	  "name": "Kontakt",
+	  "url": "/kontakt"
+	}
+  ],
+  "footer": [
+    {
+      "name": "Impressum",
+      "url": "/impressum"
+    },
+    {
+      "name": "Datenschutz",
+      "url": "/datenschutz"
+    }
+  ]
+}

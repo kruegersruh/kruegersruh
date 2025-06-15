@@ -1,0 +1,66 @@
+---
+import MemberCard from "@/components/MemberCard.astro";
+import Base from "@/layouts/Base.astro";
+import { getSinglePage } from "@/lib/contentParser.astro";
+import PageHeader from "@/partials/PageHeader.astro";
+import { getEntry, type CollectionEntry } from "astro:content";
+
+const COLLECTION_FOLDER = "vorstand";
+
+const memberIndex = (await getEntry(
+  COLLECTION_FOLDER,
+  "-index"
+)) as CollectionEntry<"members">;
+const members = await getSinglePage(COLLECTION_FOLDER);
+---
+<Base title={memberIndex.data.title}>
+  <PageHeader title={memberIndex.data.title} />
+  
+  <section class="section-sm pb-0">
+  <h2 class="text-center">Geschäftsführender Vorstand gem. § 26 BGB</h3>
+  </br>
+    <div class="container">
+      <div class="row justify-center">
+        {
+          members.sort((x, y) => {const order = ['1. Vorsitzende/r', '2. Vorsitzende/r', '1. Kassierer/in', '1. Schriftführer/in']; return order.indexOf(x.data.title) - order.indexOf(y.data.title);}).filter((member) => ['1. Vorsitzende/r', '2. Vorsitzende/r', '1. Kassierer/in', '1. Schriftführer/in'].includes(member.data.title)).map((member) => (
+            <div class="mb-14 md:col-6 lg:col-4">
+              <MemberCard data={member} />
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+  
+  <section class="section-sm pb-0">
+  <h2 class="text-center">Beisitzer</h3>
+  </br>
+    <div class="container">
+      <div class="row justify-center">
+        {
+          members.sort((x, y) => {const order = ['2. Kassierer/in', '2. Schriftführer/in', 'Fachberater/in', 'Pressesprecher/in']; return order.indexOf(x.data.title) - order.indexOf(y.data.title);}).filter((member) => ['2. Kassierer/in', '2. Schriftführer/in', 'Fachberater/in', 'Pressesprecher/in'].includes(member.data.title)).map((member) => (
+            <div class="mb-14 md:col-6 lg:col-4">
+              <MemberCard data={member} />
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+  
+  <section class="section-sm pb-0">
+  <h2 class="text-center">Abteilungen</h3>
+  </br>
+    <div class="container">
+      <div class="row justify-center">
+        {
+          members.sort((x, y) => {return x.data.title < y.data.title ? -1 : (x.data.name < y.data.name ? -1 : 0);}).filter((member) => !['1. Vorsitzende/r', '2. Vorsitzende/r', '1. Kassierer/in', '1. Schriftführer/in', '2. Kassierer/in', '2. Schriftführer/in', 'Fachberater/in', 'Pressesprecher/in'].includes(member.data.title)).map((member) => (
+            <div class="mb-14 md:col-6 lg:col-4">
+              <MemberCard data={member} />
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</Base>

@@ -1,0 +1,59 @@
+---
+import ImageMod from "@/components/ImageMod.astro";
+import Base from "@/layouts/Base.astro";
+import { getSinglePage } from "@/lib/contentParser.astro";
+import { slugify } from "@/lib/utils/textConverter";
+import { render } from "astro:content";
+
+// get all static paths for members
+export async function getStaticPaths() {
+  const COLLECTION_FOLDER = "vorstand";
+  const members = await getSinglePage(COLLECTION_FOLDER);
+
+  const paths = members.map((member) => ({
+    params: {
+      single: member.id,
+    },
+    props: { member },
+  }));
+  return paths;
+}
+
+const { member } = Astro.props;
+const { title, name, phone, mail, address, description, image } = member.data;
+const { Content } = await render(member);
+---
+
+<Base
+  title={title}
+  meta_title={meta_title}
+  description={description}
+  image={image}
+>
+  <section class="section-sm pb-0">
+    <div class="container">
+      <div
+        class="row justify-center border-b border-border pb-14 dark:border-darkmode-border"
+      >
+        <div class="text-center lg:col-4">
+          {
+            image && (
+              <ImageMod
+                src={image}
+                class="mx-auto mb-10 rounded"
+                height={200}
+                width={200}
+                alt={title}
+                format="webp"
+              />
+            )
+          }
+          <h1 class="h3 mb-6">{title}</h1>
+          <div class="content">
+            <Content />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Base>

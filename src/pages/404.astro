@@ -1,0 +1,30 @@
+---
+import Base from "@/layouts/Base.astro";
+import ImageMod from "@/components/ImageMod.astro";
+---
+
+<Base title="Page Not Found" image="/images/404.png">
+  <section class="section-sm text-center">
+    <div class="container">
+	  <ImageMod
+			class="mx-auto mb-6 rounded-lg"
+			src="/images/404.png"
+			width="200"
+			height="200"
+			alt="404"
+			format="webp"
+		  />
+      <div class="row justify-center">
+        <div class="sm:col-10 md:col-8 lg:col-6">
+          <h1 class="h2 mb-4">Page Not Found</h1>
+          <div class="content">
+            <p>
+              Leider ist die gesuchte Seite nicht (mehr) verfügbar.
+            </p>
+          </div>
+          <a href="/" class="btn btn-primary mt-8">Homepage</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Base>

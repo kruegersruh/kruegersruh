@@ -1,0 +1,52 @@
+{
+  "site": {
+    "title": "KGV Krügersruh e.V.",
+    "base_url": "https://astroplate.netlify.app",
+    "base_path": "/",
+    "trailing_slash": false,
+    "favicon": "/images/favicon.png",
+    "logo_lightmode": "/images/logo_light.png",
+    "logo_darkmode": "/images/logo_dark.png",
+    "logo_width": "125",
+    "logo_height": "200",
+    "logo_text": "Kruegersruh"
+  },
+
+  "settings": {
+    "search": false,
+    "sticky_header": true,
+    "theme_switcher": true,
+    "default_theme": "light",
+    "pagination": 2,
+    "summary_length": 200,
+    "blog_folder": "blog"
+  },
+
+  "params": {
+    "contact_form_action": "#",
+    "copyright": ""
+  },
+
+  "navigation_button": {
+    "enable": false,
+    "label": "",
+    "link": ""
+  },
+
+  "google_tag_manager": {
+    "enable": false,
+    "gtm_id": ""
+  },
+
+  "disqus": {
+    "enable": false,
+    "shortname": "themefisher-template",
+    "settings": {}
+  },
+
+  "metadata": {
+    "meta_author": "zeon.studio",
+    "meta_image": "/images/og-image.png",
+    "meta_description": "astro and tailwind boilerplate"
+  }
+}
