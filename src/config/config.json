@@ -42,11 +42,5 @@
     "enable": false,
     "shortname": "themefisher-template",
     "settings": {}
-  },
-
-  "metadata": {
-    "meta_author": "zeon.studio",
-    "meta_image": "/images/og-image.png",
-    "meta_description": "astro and tailwind boilerplate"
   }
 }

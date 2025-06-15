@@ -17,20 +17,23 @@ export default defineConfig({
   image: { service: sharp() },
   vite: { plugins: [tailwindcss()] },
 
-  integrations: [react(), sitemap(), AutoImport({
-    imports: [
-      "@/shortcodes/Button",
-      "@/shortcodes/Accordion",
-      "@/shortcodes/Notice",
-      "@/shortcodes/Video",
-      "@/shortcodes/Youtube",
-      "@/shortcodes/Tabs",
-      "@/shortcodes/Tab",
-    ],
+  integrations: [
+	react(), 
+	sitemap(), 
+	AutoImport({
+		imports: [
+		  "@/shortcodes/Button",
+		  "@/shortcodes/Accordion",
+		  "@/shortcodes/Notice",
+		  "@/shortcodes/Video",
+		  "@/shortcodes/Youtube",
+		  "@/shortcodes/Tabs",
+		  "@/shortcodes/Tab",
+		],
   }), mdx()],
 
   markdown: {
-    remarkPlugins: [remarkToc, [remarkCollapse, { test: "Table of contents" }]],
+    remarkPlugins: [remarkToc, [remarkCollapse, { test: "Inhaltsverzeichnis" }]],
     shikiConfig: { theme: "one-dark-pro", wrap: true },
     extendDefaultPlugins: true,
   }
