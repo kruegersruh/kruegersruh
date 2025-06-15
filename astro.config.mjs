@@ -11,7 +11,7 @@ import config from "./src/config/config.json";
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://kruegersruh.github.io/',
+  site: 'https://kruegersruh.github.io',
   base: '/kruegersruh',
   trailingSlash: config.site.trailing_slash ? "always" : "never",
   image: { service: sharp() },
