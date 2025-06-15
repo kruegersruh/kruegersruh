@@ -11,7 +11,8 @@ import config from "./src/config/config.json";
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://kruegersruh.github.io/kruegersruh',
+  site: 'https://kruegersruh.github.io/',
+  base: '/kruegersruh',
   trailingSlash: config.site.trailing_slash ? "always" : "never",
   image: { service: sharp() },
   vite: { plugins: [tailwindcss()] },
