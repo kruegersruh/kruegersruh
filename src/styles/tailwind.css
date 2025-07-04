@@ -1,0 +1,24 @@
+@import 'tailwindcss';
+
+.fc .fc-list-day-text {
+    text-decoration: none;
+}
+
+.fc .fc-list-day-side-text {
+    text-decoration: none;
+}
+
+.fc-list-table {
+    table-layout: auto;
+}
+
+.fc-list-table tr th:first-child,
+.fc-list-table tr td:first-child {
+  width: 25%;
+}
+
+.fc .fc-button-primary {     
+    color: #ffffff;     
+    background-color: #124037 !important;     
+    border-color: #ffffff !important; 
+}

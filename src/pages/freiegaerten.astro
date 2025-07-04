@@ -1,0 +1,61 @@
+---
+import DefaultLayout from '../layouts/DefaultLayout.astro'
+import PageHeader from '../components/PageHeader.astro'
+import { Icon } from 'astro-icon/components'
+import {
+  Accordion,
+  AccordionItem,
+  Avatar,
+  AvatarGroup,
+  Badge,
+  Breadcrumbs,
+  BreadcrumbsItem,
+  Card,
+  DarkMode,
+  Media,
+  Modal,
+  Notification,
+  Pagination,
+  Tabs,
+  TabsList,
+  TabsTab,
+  TabsPanel,
+  Video,
+} from 'accessible-astro-components'
+---
+
+<DefaultLayout title="Freie Gärten">
+  <PageHeader
+      title="Freie Gärten"
+      bgType="none"
+    />
+  <section class="mt-5 mb-12">
+    <div class="container">
+      <p><b>Hier finden sich aktuelle freie Gärten.</b>
+    </div>
+  </section>
+ 
+  <section class="mt-5 mb-12"> 
+    <div class="container">
+      <Accordion>
+        <AccordionItem
+            title="Wie viel kostet ein Garten?"
+            variant="chevron"
+            open
+            >
+            <p>
+             Als einmalige Kosten muss neben der gutachterlich festgestellten Schätzsumme muss ein Gesellschafteranteil für die Stromgesellschaft in Höhe von 820 € geleistet werden. Weiterhin fallen jährlich eine Pachtgebühr in Höhe von 0,50 Cent pro Quadratmeter, ein Versicherungsbeitrag in Höhe von XXX € und Stromkosten nach Verbrauchabrechnung an.
+            </p>
+          </AccordionItem>
+          <AccordionItem
+            title="Wie kann ich mich auf einen Garten bewerben?"
+            variant="chevron"
+            >
+            <p>
+              Lorem Ipsum.
+            </p>
+          </AccordionItem>
+        </Accordion>
+    </div>
+  </section>
+</DefaultLayout>
