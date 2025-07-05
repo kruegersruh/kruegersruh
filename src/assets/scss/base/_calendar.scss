@@ -1,17 +1,16 @@
 @use './mixins' as *;
 
 .fc-list {
-    border-left:0px !important;
-    border-top:0px !important;
-    border-radius: 10px !important;
+    border-left:0px;
+    border-top:0px;
+    border-radius: 10px;
 }
 
 .fc-list-table {
-    overflow: hidden !important;
-    table-layout: auto !important;
-    border-collapse:separate !important;
-    border: 2px solid light-dark(var(--color-primary-200), var(--color-primary-100)) !important;
-    border-radius: 10px !important;
+    overflow: hidden;
+    table-layout: auto ;
+    border-collapse: separate;
+    border-radius: 10px ;
     
 }
 
