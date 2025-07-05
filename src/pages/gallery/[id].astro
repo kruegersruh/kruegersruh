@@ -1,6 +1,7 @@
 ---
 import DefaultLayout from '@layouts/DefaultLayout.astro'
 import PageHeader from '@components/PageHeader.astro'
+import { Media } from 'accessible-astro-components'
 import { Image } from 'astro:assets'
 import { getCollection } from "astro:content";
 import { getAlbumImages } from '../../utils/album.ts';
@@ -40,12 +41,10 @@ const images = await getAlbumImages(album.id);
               >
                 {
                   images.map((image) => (
-                    <Image
-                      src={image}
-                      alt={`Image from ${album.data.title} album`}
-                      format="avif"
-                      quality={50}
-                      class="rounded-sm mb-4 border border-transparent hover:border-gray-300 transition-all duration-300 ease-in-out hover:shadow-lg"
+                    <Media
+                      src={image.src}
+                      alt={`Foto aus ${album.data.title} Album`}
+                      ratio="auto"
                       loading="lazy"
                     />
                   ))
