@@ -10,7 +10,8 @@ import react from '@astrojs/react';
 // https://astro.build/config
 export default defineConfig({
   compressHTML: true,
-  site: 'https://kruegersruh.github.io/kruegersruh',
+  site: 'https://kruegersruh.github.io',
+  // base: 'kruegersruh'
   integrations: [mdx(), icon(), compress(), react()],
   vite: {
     css: {

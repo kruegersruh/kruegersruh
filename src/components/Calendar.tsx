@@ -1,5 +1,4 @@
 import FullCalendar from '@fullcalendar/react'
-import interactionPlugin from '@fullcalendar/interaction'
 import listPlugin from '@fullcalendar/list'
 import rrulePlugin from '@fullcalendar/rrule'
 import deLocale from '@fullcalendar/core/locales/de'
