@@ -37,9 +37,9 @@ export async function getStaticPaths() {
           {
             albums.map((item) => (
                 <Card
-                imageComponent={item.data.cover}
-                url={`/gallery/${item.id}`}
-                title={item.data.title}
+                  imageComponent={item.data.cover}
+                  url={`/gallery/${item.id}`}
+                  title={item.data.title}
               >
               </Card>
             ))
