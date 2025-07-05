@@ -1,14 +1,19 @@
 ---
 import DefaultLayout from '@layouts/DefaultLayout.astro'
 import PageHeader from '../components/PageHeader.astro'
+import { Image } from 'astro:assets'
 import { Card } from 'accessible-astro-components'
 import { Icon } from 'astro-icon/components'
+
+import user_0 from '../assets/images/design/user_0.png'
+import user_m from '../assets/images/design/user_m.png'
+import user_f from '../assets/images/design/user_f.png'
+
 ---
 
 <DefaultLayout title="Vorstand">
     <PageHeader
       title="Vorstand"
-      bgType="none"
     />
     <section class="mt-5 mb-12">
         <div class="container">
@@ -16,7 +21,7 @@ import { Icon } from 'astro-icon/components'
             <br/>
             <div class="grid grid-cols-3 gap-32 md:grid-cols-3">
                 <Card
-                    img="/src/assets/images/design/user_0.png"
+                    img={user_0.src}
                     title="Uwe Metz"
                     >
                     <span slot="meta">
@@ -27,7 +32,7 @@ import { Icon } from 'astro-icon/components'
                     E-Mail-Adresse: -
                 </Card>
                 <Card
-                    img="/src/assets/images/design/user_m.png"
+                    img={user_m.src}
                     title="Andreas Vierk"
                     >
                     <span slot="meta">
@@ -41,7 +46,7 @@ import { Icon } from 'astro-icon/components'
             <br/>
             <div class="grid grid-cols-3 gap-32 md:grid-cols-3">
                 <Card
-                    img="/src/assets/images/design/user_m.png"
+                    img={user_m.src}
                     title="Wilfried Oppermann"
                     >
                     <span slot="meta">
@@ -52,7 +57,7 @@ import { Icon } from 'astro-icon/components'
                     E-Mail-Adresse: -
                 </Card>
                 <Card
-                    img="/src/assets/images/design/user_m.png"
+                    img={user_m.src}
                     title="Ralph Read"
                     >
                     <span slot="meta">
@@ -71,7 +76,7 @@ import { Icon } from 'astro-icon/components'
             <br/>
             <div class="grid grid-cols-3 gap-32 md:grid-cols-3">
                 <Card
-                    img="/src/assets/images/design/user_f.png"
+                    img={user_f.src}
                     title="Rosa Konrad"
                     >
                     <span slot="meta">
@@ -83,7 +88,7 @@ import { Icon } from 'astro-icon/components'
                     E-Mail-Adresse: -
                 </Card>
                 <Card
-                    img="/src/assets/images/design/user_m.png"
+                    img={user_m.src}
                     title="Henrik Berthold"
                     >
                     <span slot="meta">
@@ -98,7 +103,7 @@ import { Icon } from 'astro-icon/components'
             <br/>
             <div class="grid grid-cols-3 gap-32 md:grid-cols-3">
                 <Card
-                    img="/src/assets/images/design/user_f.png"
+                    img={user_f.src}
                     title="Martina Petersen"
                     >
                     <span slot="meta">
@@ -117,7 +122,7 @@ import { Icon } from 'astro-icon/components'
             <br/>
             <div class="grid grid-cols-3 gap-32 md:grid-cols-3">
                 <Card
-                    img="/src/assets/images/design/user_f.png"
+                    img={user_f.src}
                     title="Peggy Reuß"
                     >
                     <span slot="meta">
@@ -128,7 +133,7 @@ import { Icon } from 'astro-icon/components'
                     E-Mail-Adresse: -
                 </Card>
                 <Card
-                    img="/src/assets/images/design/user_f.png"
+                    img={user_f.src}
                     title="Katy Kuhlmann"
                     url="/festausschuss"
                     >
@@ -144,7 +149,7 @@ import { Icon } from 'astro-icon/components'
             <br/>
             <div class="grid grid-cols-3 gap-32 md:grid-cols-3">
                 <Card
-                    img="/src/assets/images/design/user_m.png"
+                    img={user_m.src}
                     title="Hans-Joachim Rezepka"
                     url="/gemeinschaftsarbeit"
                     >
@@ -156,7 +161,7 @@ import { Icon } from 'astro-icon/components'
                     E-Mail-Adresse: -
                 </Card>
                 <Card
-                    img="/src/assets/images/design/user_m.png"
+                    img={user_m.src}
                     title="Ralph Read"
                     >
                     <span slot="meta">
@@ -175,7 +180,7 @@ import { Icon } from 'astro-icon/components'
             <br/>
             <div class="grid grid-cols-3 gap-32 md:grid-cols-3">
                 <Card
-                    img="/src/assets/images/design/user_m.png"
+                    img={user_m.src}
                     title="Markus Schüttkow"
                     >
                     <span slot="meta">
@@ -187,7 +192,7 @@ import { Icon } from 'astro-icon/components'
                     E-Mail-Adresse: -
                 </Card>
                 <Card
-                    img="/src/assets/images/design/user_m.png"
+                    img={user_m.src}
                     title="Hans-Joachim Rezepka"
                     >
                     <span slot="meta">
@@ -202,7 +207,7 @@ import { Icon } from 'astro-icon/components'
             <br/>
             <div class="grid grid-cols-3 gap-32 md:grid-cols-3">
                 <Card
-                    img="/src/assets/images/design/user_m.png"
+                    img={user_m.src}
                     title="Wolfgang Arendt"
                     >
                     <span slot="meta">
@@ -214,7 +219,7 @@ import { Icon } from 'astro-icon/components'
                     E-Mail-Adresse: -
                 </Card>
                 <Card
-                    img="/src/assets/images/design/user_m.png"
+                    img={user_m.src}
                     title="Thomas Stukowski"
                     >
                     <span slot="meta">

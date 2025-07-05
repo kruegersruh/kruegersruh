@@ -1,13 +1,14 @@
 ---
 import DefaultLayout from '@layouts/DefaultLayout.astro'
 import { Image } from 'astro:assets'
+import img_404 from '@assets/images/design/404.png'
 ---
 
 <DefaultLayout title="404">
   <section class="my-12 text-center">
     <div class="container">
       <div style="display:flex;justify-content: center;">
-        <Image src="/src/assets/images/design/404.png" alt="" decoding="async" width={300} height={300} loading="eager" />
+        <Image src={img_404} alt="" width={300} height={300} decoding="async" loading="eager" />
       </div>
     </div>
   </section>

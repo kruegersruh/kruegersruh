@@ -3,12 +3,14 @@ import DefaultLayout from '@layouts/DefaultLayout.astro'
 import PageHeader from '../components/PageHeader.astro'
 import { Accordion, AccordionItem, Card } from 'accessible-astro-components'
 import { Icon } from 'astro-icon/components'
+
+import user_m from '../assets/images/design/user_m.png'
+import user_f from '../assets/images/design/user_f.png'
 ---
 
 <DefaultLayout title="Stromgesellschaft">
     <PageHeader
       title="Stromgesellschaft"
-      bgType="none"
     />
     <section class="mt-5 mb-12">
         <div class="container">
@@ -16,7 +18,7 @@ import { Icon } from 'astro-icon/components'
             <br/>
             <div class="grid grid-cols-3 gap-32 md:grid-cols-3">
                 <Card
-                    img="/src/assets/images/design/user_m.png"
+                    img={user_m.src}
                     title="Driss el Badaoui"
                     >
                     <span slot="meta">
@@ -28,7 +30,7 @@ import { Icon } from 'astro-icon/components'
                     E-Mail-Adresse: -
                 </Card>
                 <Card
-                    img="/src/assets/images/design/user_m.png"
+                    img={user_m.src}
                     title="Thomas Stukowski"
                     >
                     <span slot="meta">

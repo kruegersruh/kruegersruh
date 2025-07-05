@@ -2,33 +2,14 @@
 import DefaultLayout from '../layouts/DefaultLayout.astro'
 import PageHeader from '../components/PageHeader.astro'
 import { Icon } from 'astro-icon/components'
-import {
-  Accordion,
-  AccordionItem,
-  Avatar,
-  AvatarGroup,
-  Badge,
-  Breadcrumbs,
-  BreadcrumbsItem,
-  Card,
-  DarkMode,
-  Media,
-  Modal,
-  Notification,
-  Pagination,
-  Tabs,
-  TabsList,
-  TabsTab,
-  TabsPanel,
-  Video,
-} from 'accessible-astro-components'
-import Calendar from '../components/CalendarForParty.tsx'
+import { Accordion, AccordionItem } from 'accessible-astro-components'
+import Calendar from '@components/CalendarForParty.tsx'
+import SponsorBlock from '@components/SponsorBlock.astro' 
 ---
 
 <DefaultLayout title="Festausschuss">
   <PageHeader
       title="Festausschuss"
-      bgType="none"
     />
   <section class="mt-5 mb-12">
     <div class="container">
@@ -62,5 +43,6 @@ import Calendar from '../components/CalendarForParty.tsx'
           </AccordionItem>
         </Accordion>
     </div>
+    <SponsorBlock client:only="react" />
   </section>
 </DefaultLayout>
