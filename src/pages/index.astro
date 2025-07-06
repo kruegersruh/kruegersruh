@@ -1,11 +1,11 @@
 ---
 import DefaultLayout from '@layouts/DefaultLayout.astro'
-import { Image } from 'astro:assets'
 import { Accordion, AccordionItem, Media, Notification } from 'accessible-astro-components'
 import Counter from '@components/Counter.astro'
 import ContentMedia from '@components/ContentMedia.astro'
 import SponsorBlock from '@components/SponsorBlock.astro'
 
+import { Image } from 'astro:assets'
 import img_roses from '@graphics/design/roses.png'
 import img_right from '@graphics/design/dave-lastovskiy-RygIdTavhkQ-unsplash.jpg'
 import img_left from '@graphics/design/erda-estremera-0ZxdAGG4aWU-unsplash.jpg'
@@ -49,7 +49,7 @@ const currentYear = new Date().getFullYear()
       Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
     </p>
   </ContentMedia>
-  <SponsorBlock />
+  <SponsorBlock/>
 </DefaultLayout>
 
 <style>

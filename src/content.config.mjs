@@ -29,5 +29,13 @@ const gallery = defineCollection({
     }),
 });
 
+const logos = defineCollection({
+  type: "data",
+  schema: ({ image }) =>
+    z.object({
+      logo: image(),
+    }),
+});
+
 // 4. Export a single `collections` object to register you collection(s)
-export const collections = { blog, gallery }
+export const collections = { blog, gallery, logos }
