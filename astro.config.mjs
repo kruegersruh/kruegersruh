@@ -11,7 +11,7 @@ import react from '@astrojs/react';
 export default defineConfig({
   compressHTML: true,
   site: 'https://kruegersruh.github.io/',
-  base: '/kruegersruh',
+  base: '/kruegersruh/',
   integrations: [mdx(), icon(), compress(), react()],
   vite: {
     css: {
