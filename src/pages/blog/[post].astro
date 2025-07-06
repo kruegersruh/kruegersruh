@@ -12,12 +12,13 @@ export async function getStaticPaths() {
       ...item,
       title: item.data.title.split(' ').slice(0, 4).join(' '),
       excerpt: item.data.excerpt,
+      url: new Date(item.data.datum).toISOString().split('T')[0].replaceAll('-','') + '_' + item.data.title.split(' ').slice(0, 4).join(' ').replaceAll(' ', '-').toLowerCase(),
       cover: item.data.cover,
       author: {name: item.data.author_name, image: item.data.author_image, biography: item.data.author_biography}
     }
 
     return {
-      params: { post: post.data.title.split(' ').slice(0, 4).join(' ').replaceAll(' ', '-').toLowerCase() },
+      params: { post: post.url },
       props: { post },
     }
   })
@@ -27,19 +28,15 @@ const { post } = Astro.props
 const { Content } = await render(post)
 ---
 
-<DefaultLayout title={post.title} description={post.body} url={post.title}>
+<DefaultLayout title={post.title} description={post.body} url={post.url}>
   <PageHeader
     title={post.title}
     subtitle={post.excerpt}
     author={post.author}
   />
-  <section class="my-12">
+  <section class="mt-5 mb-20">
     <div class="narrow container">
       <Content />
     </div>
-  </section>
-  <section class="my-12">
-    <div class="narrow space-content container">
-     
   </section>
 </DefaultLayout>

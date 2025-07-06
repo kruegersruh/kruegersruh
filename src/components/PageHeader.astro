@@ -74,13 +74,13 @@ const sanitizedSubtitle: string = subtitle
 
           return (
             <Breadcrumbs>
-              <BreadcrumbsItem href="/" label="Home" />
+              <BreadcrumbsItem href="/" label="HOME" />
               {segments.map((segment, index) => {
                 const url = `/${segments.slice(0, index + 1).join('/')}`
                 const isLast = index === segments.length - 1
                 const formattedName = segment
-                  .split('-')
-                  .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+                  .split(/(?:-|_)/)
+                  .map((word) => word.toUpperCase())
                   .join(' ')
 
                 return <BreadcrumbsItem href={isLast ? undefined : url} label={formattedName} currentPage={isLast} />

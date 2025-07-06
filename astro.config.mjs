@@ -27,10 +27,13 @@ export default defineConfig({
     resolve: {
       alias: {
         '@assets': fileURLToPath(new URL('./src/assets', import.meta.url)),
+        '@graphics': fileURLToPath(new URL('./src/assets/graphics', import.meta.url)),
         '@layouts': fileURLToPath(new URL('./src/layouts', import.meta.url)),
         '@components': fileURLToPath(new URL('./src/components', import.meta.url)),
         '@content': fileURLToPath(new URL('./src/content', import.meta.url)),
+        '@images': fileURLToPath(new URL('./src/content/images', import.meta.url)),
         '@pages': fileURLToPath(new URL('./src/pages', import.meta.url)),
+        '@utils': fileURLToPath(new URL('./src/utils', import.meta.url)),
         '@public': fileURLToPath(new URL('./public', import.meta.url))
       },
     },

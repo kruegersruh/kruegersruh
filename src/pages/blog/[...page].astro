@@ -13,8 +13,9 @@ export async function getStaticPaths({ paginate }: { paginate: PaginateFunction 
       ...item,
       title: item.data.title.split(' ').slice(0, 4).join(' '),
       excerpt: item.data.excerpt,
-      url: item.data.title.split(' ').slice(0, 4).join(' ').replaceAll(' ', '-').toLowerCase(),
-      cover: item.data.cover
+      url: new Date(item.data.datum).toISOString().split('T')[0].replaceAll('-','') + '_' + item.data.title.split(' ').slice(0, 4).join(' ').replaceAll(' ', '-').toLowerCase(),
+      cover: item.data.cover,
+      datum: new Date(item.data.datum).toLocaleDateString("de-DE", {year: "numeric", month: "long", day: "2-digit"})
     }
   })
 
@@ -42,7 +43,11 @@ const { page } = Astro.props;
                 imageComponent={item.cover}
                 url={'/blog/' + item.url}
                 title={item.title}>
-                {item.excerpt}
+                  <div>
+                    {item.datum}<br/>
+                    {item.excerpt}
+                  </div>
+                
               </Card>
             </li>
           ))
@@ -64,7 +69,7 @@ const { page } = Astro.props;
 </DefaultLayout>
 
 <style lang="scss" is:global>
-  @use '../../assets/scss/base/mixins' as *;
+  @use '@assets/scss/base/mixins' as *;
 
   .card {
     h3 {

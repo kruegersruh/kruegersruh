@@ -24,7 +24,7 @@ const gallery = defineCollection({
   schema: ({ image }) =>
     z.object({
       title: z.string(),
-      description: z.string().optional(),
+      excerpt: z.string().optional(),
       cover: image(),
     }),
 });
