@@ -34,8 +34,8 @@ const { page } = Astro.props;
 
   <section class="my-12">
     <div class="container">
-      <p class="text-sm"><em>{page.start + 1} bis {page.end + 1} von {page.total} Posts.</em></p>
-      <ul class="my-3 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+      <p class="text-sm"><em>{page.end + 1} von {page.total} Posts.</em></p>
+      <ul class="container flex flex-col gap-20 md:flex-row md:justify-left">
         {
           page.data.map((item) => (
             <li>

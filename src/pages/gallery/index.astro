@@ -17,7 +17,7 @@ const gallery = await getCollection("gallery");
   <section class="mt-5 mb-12">
     <div class="container">
       <div class="p-8">
-        <div class="mx-auto container max-w-(--breakpoint-sm) grid grid-cols-3 gap-10 text-center">
+        <div class="container flex flex-col gap-20 md:flex-row md:justify-left">
           {
             gallery.map((item) => (
               <Card
