@@ -2,7 +2,7 @@
 import DefaultLayout from '@layouts/DefaultLayout.astro'
 import PageHeader from '@components/PageHeader.astro'
 import { getCollection } from "astro:content";
-import { Media } from 'accessible-astro-components'
+import { Image, getImage } from 'astro:assets'
 
 export async function getStaticPaths() {
   const gallery = await getCollection("gallery");
@@ -43,19 +43,26 @@ const images = await getCover(album.id);
     <section class="mt-5 mb-12">
       <div class="container">
         <div class="text-center my-16 mb-32">
-            <div class="mx-auto container my-8 sm:columns-2 md:columns-3 lg:columns-4 xl:columns-5">
+            <div id="gallery" class="container mx-auto sm:columns-2 md:columns-3 lg:columns-4 xl:columns-5" >
             {
-                images.map((image) => (
-                <Media
-                    src={image.src}
-                    alt={`Foto aus ${album.data.title} Album`}
-                    ratio="auto"
-                    loading="lazy"
-                />
+                images.map(async (image) => (
+                   <a href={image.src}
+                    data-pswp-width={(await getImage({src: image, width: 1920})).attributes.width}
+                    data-pswp-height={(await getImage({src: image, width: 1920})).attributes.height}
+                    target="_blank"
+                    class="px-2 py-2"
+                  >
+                    <Image
+                      src={image}
+                      alt={`Foto aus ${album.data.title} Album`}
+                      width={450}
+                      class={"rounded-md border-[1px] border-primary hover:border-secondary object-cover w-full grayscale-[50%] hover:grayscale-0 transition duration-300 ease-in-out"}
+                      loading="lazy"
+                    /></a>
                 ))
             }
             </div>
-        </div>
+          </div>
       </div>
     </section>
     <section>
@@ -66,3 +73,25 @@ const images = await getCover(album.id);
         </div>
     </section>
   </DefaultLayout>
+
+  <script>
+    import PhotoSwipeLightbox from "photoswipe/lightbox";
+    import "photoswipe/style.css";
+  
+    let lightbox: PhotoSwipeLightbox;
+  
+    document.addEventListener("astro:page-load", () => {
+      lightbox = new PhotoSwipeLightbox({
+        gallery: "#gallery",
+        children: "a",
+        pswpModule: () => import("photoswipe"),
+      });
+  
+      lightbox.init();
+    });
+  
+    document.addEventListener("astro:before-swap", () => {
+      lightbox.destroy();
+    });
+  </script>
+

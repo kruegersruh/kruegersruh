@@ -1,15 +1,14 @@
 ---
 import DefaultLayout from '@layouts/DefaultLayout.astro'
 import PageHeader from '@components/PageHeader.astro'
+import { getCollection, getEntry } from "astro:content";
 import { Icon } from 'astro-icon/components'
-import { Accordion, AccordionItem, Card, Pagination } from 'accessible-astro-components'
-import type { PaginateFunction, Page } from 'astro'
-import type { FunctionalComponent } from 'preact';
-import { getCollection } from "astro:content";
+import { Accordion, AccordionItem, Card } from 'accessible-astro-components'
+import { Image, getImage } from 'astro:assets'
 
 const data = await fetch("https://opensheet.elk.sh/19ZpR0tDDIygHf2JtfKnFc6NznlwljL05erhcrY0ePUs/FREIE_GAERTEN").then((response) => response.json());
 
-console.log(data);
+const images = import.meta.glob<{ default: ImageMetadata }>('/src/content/images/*.{jpeg,jpg,png,gif}')
 
 ---
 <DefaultLayout title="Freie Gärten">
@@ -19,20 +18,46 @@ console.log(data);
     />
     <section class="mt-5 mb-12"> 
       <div class="container">
-        <table>
-          <tr>
-            <th>Adresse</th>
-            <th>Größe</th>
-            <th>Schätzsumme</th>
-          </tr>
-          {data.map((garden:any) => (
-            <tr>
-            <td>{garden.ADDRESS}</td>
-            <td>{garden.SIZE}</td>
-            <td>{garden.COST}</td>
-            </tr>
-          ))}
-        </table>
+        {data.map(async (garden:any) => { 
+          const obj = Object.fromEntries(Object.entries(images).filter(([key]) => key.includes(garden.ADDRESS.replace(' ', '_'))));
+          const gardenImages = await Promise.all(Object.values(obj).map((image) => image().then((mod) => mod.default)));
+          return (
+            <Card 
+            title={garden.ADDRESS} 
+            imageComponent={gardenImages[0]}
+            url="javascript: void(0)"
+            >
+              <span slot="meta">
+                  <Icon name="lucide:flower-2" />
+                  Kleingärtnerverein Krügersruh e. V.
+              </span>
+
+              <span>Größe: {garden.SIZE} m²</span><br/>
+              <span>Schätzsumme: {garden.COST}</span>
+              <p>{garden.INFO}</p>
+
+              <div id="gallery" class="container mx-auto sm:columns-2 md:columns-3 lg:columns-4 xl:columns-5" >
+                {
+                    gardenImages.map(async (image) => (
+                      <a href={image.src}
+                        data-pswp-width={(await getImage({src: image, width: 1920})).attributes.width}
+                        data-pswp-height={(await getImage({src: image, width: 1920})).attributes.height}
+                        target="_blank"
+                        class="px-2 py-2"
+                      >
+                        <Image
+                          src={image}
+                          alt={`Foto vom ${garden.ADDRESS}`}
+                          width={450}
+                          class={"rounded-md border-[1px] border-primary hover:border-secondary object-cover w-full grayscale-[50%] hover:grayscale-0 transition duration-300 ease-in-out aspect-[3/2]"}
+                          loading="lazy"
+                        /></a>
+                    ))
+                }
+                </div>
+            </Card>
+          
+        )})}
       </div>
     </section>
   <section class="mt-5 mb-12"> 
@@ -44,7 +69,7 @@ console.log(data);
             open
             >
             <p>
-             Als einmalige Kosten ergeben sich neben der gutachterlich festgestellten Schätzsumme auch ein Gesellschafteranteil für die Stromgesellschaft in Höhe von 820 €. Weiterhin fallen jährlich eine Pachtgebühr in Höhe von 0,50 Cent pro Quadratmeter, ein Vereinsbeitrag in Höhe von 110 €, ein Beitrag zur Feuer-, Einbruch- und Diebstahlversicherung (FED) in Höhe von 98 €, ein Beitrag zur Unfallversicherung in Höhe von 3,10 € und Stromkosten je nach Verbrauch an.
+             Als einmalige Kosten ergeben sich neben der gutachterlich festgestellten Schätzsumme auch ein Gesellschafteranteil für die Stromgesellschaft in Höhe von 820 €. Weiterhin fallen jährlich eine Pachtgebühr in Höhe von 0,50 Cent pro Quadratmeter, ein Vereinsbeitrag in Höhe von 110 €, ein Beitrag zur Feuer-, Einbruch- und Diebstahlversicherung (FED) in Höhe von 98 €, ein Beitrag zur Unfallversicherung in Höhe von 3,10 € und eine Stromvorauszahlung in Höhe von 50 € bzw. Stromkosten je nach Verbrauch an.
             </p>
           </AccordionItem>
           <AccordionItem
@@ -52,7 +77,8 @@ console.log(data);
             variant="chevron"
             >
             <p>
-              Lorem Ipsum.
+              Hierzu kannst du das bereitgestellte Bewerbungsformular an kruegersruh@yahoo.de senden.
+              Bitte wende dich zur Vereinbarung eines Besichtigungstermins oder zur Klärung weiterer Fragen an Wilfried Oppermann aus dem Vorstand unter +491739130307.
             </p>
           </AccordionItem>
         </Accordion>
@@ -61,7 +87,32 @@ console.log(data);
 </DefaultLayout>
 
 <style>
-  td {
-    text-align: center;
+  .garden {
+    pointer-events: none;
   }
+
+
 </style>
+
+<script>
+  import PhotoSwipeLightbox from "photoswipe/lightbox";
+  import "photoswipe/style.css";
+
+  let lightbox: PhotoSwipeLightbox;
+
+  document.addEventListener("astro:page-load", () => {
+    lightbox = new PhotoSwipeLightbox({
+      gallery: "#gallery",
+      children: "a",
+      pswpModule: () => import("photoswipe"),
+    });
+
+    lightbox.init();
+  });
+
+  document.addEventListener("astro:before-swap", () => {
+    lightbox.destroy();
+  });
+
+
+</script>

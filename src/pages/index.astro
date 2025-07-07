@@ -1,14 +1,20 @@
 ---
 import DefaultLayout from '@layouts/DefaultLayout.astro'
-import { Accordion, AccordionItem, Media, Notification } from 'accessible-astro-components'
+
+import { Accordion, AccordionItem, Card, Media, Modal, Notification } from 'accessible-astro-components'
+import { Icon } from 'astro-icon/components'
+
 import Counter from '@components/Counter.astro'
 import ContentMedia from '@components/ContentMedia.astro'
 import SponsorBlock from '@components/SponsorBlock.astro'
 
 import { Image } from 'astro:assets'
 import img_roses from '@graphics/design/roses.png'
-import img_right from '@graphics/design/dave-lastovskiy-RygIdTavhkQ-unsplash.jpg'
-import img_left from '@graphics/design/erda-estremera-0ZxdAGG4aWU-unsplash.jpg'
+import img_garden from '@graphics/design/patrick-federi-vOaUMTTr8YQ-unsplash.jpg'
+
+import { getCollection } from "astro:content";
+const blog = (await getCollection("blog")).sort((x, y) => y.data.datum.valueOf() - x.data.datum.valueOf());
+const post = (await getCollection("blog")).sort((x, y) => y.data.datum.valueOf() - x.data.datum.valueOf())[0];
 
 const currentYear = new Date().getFullYear()
 ---
@@ -32,7 +38,16 @@ const currentYear = new Date().getFullYear()
   </section>
   <section class="mt-15 mb-32">
     <div class="container">
-      <h2 class="mb-16 text-6xl">Zahlen, Daten & Fakten</h2>
+      <Modal
+        class="notify"
+        title="Welcome!"
+      >
+        <p>This is the modal content.</p>
+      </Modal>
+    </div>
+  </section>
+  <section class="mt-15 mb-32">
+    <div class="container">
       <div class="grid grid-cols-1 gap-12 sm:grid-cols-2 md:grid-cols-3">
         <Counter count={currentYear-1911} title="Jahre" sub="seit Vereinsgründung" />
         <Counter count="130" title="Gärten" sub="auf ungefähr 8 Hektar" />
@@ -40,18 +55,45 @@ const currentYear = new Date().getFullYear()
       </div>
     </div>
   </section>
-  <ContentMedia src={img_right.src}>
-    <h2>Lorem Ipsum.</h2>
-    <p class="text-2xl">
-      Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-    </p>
-  </ContentMedia>
-  <ContentMedia src={img_left.src} reverse={true}>
-    <h2>Lorem Ipsum.</h2>
-    <p class="text-2xl">
-      Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-    </p>
-  </ContentMedia>
+
+  <section class="my-15">
+    <div class="container">
+      <div class="grid items-center grid-cols-1 gap-24 md:grid-cols-2">
+        <Media src={img_garden.src} ratio="auto" />
+        <div>
+          <h2>Lorem Ipsum.</h2>
+          <p class="text-2xl">
+            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="my-15">
+    <div class="container">
+      <div class="grid grid-cols-1 gap-24 md:grid-cols-2">
+        <div>
+          <h2>Fachberatung</h2>
+          <p class="text-2xl">
+            Hier findest du den neusten Beitrag unserer Fachberatung.
+          </p>
+        </div>
+        
+        <Card
+        imageComponent={post.data.cover}
+        url={'/blog/' + new Date(post.data.datum).toISOString().split('T')[0].replaceAll('-','') + '_' + post.data.title.split(' ').slice(0, 4).join(' ').replaceAll(' ', '-').toLowerCase()}
+        title={post.data.title}>
+          <div>
+            {new Date(post.data.datum).toLocaleDateString("de-DE", {year: "numeric", month: "long", day: "2-digit"})}<br/>
+            {post.data.excerpt}
+          </div>
+        
+      </Card>
+      </div>
+    </div>
+  </section>
+
   <SponsorBlock/>
 </DefaultLayout>
 
