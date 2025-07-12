@@ -9,4 +9,13 @@ content:
   - name: blog
     label: Blog
     path: src/content/blog
-    type: file
+    type: collection
+    filename: '{year}-{month}-{day}-{primary}.mdx'
+    view:
+      fields: [ title ]
+      primary: title
+      sort: [ datum, title ]
+      default:
+        search: ''
+        sort: title
+        order: desc
