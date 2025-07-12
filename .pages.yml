@@ -1,6 +1,11 @@
 media:
   - name: images
     label: Images
+    input: src/content/images
+    output: /src/content/images
+    extensions: [ jpeg, jpg, png ]
+  - name: gallery
+    label: Gallery
     input: src/content/gallery
     output: /src/content/gallery
     extensions: [ jpeg, jpg, png ]
