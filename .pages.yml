@@ -35,4 +35,7 @@ content:
       - name: role
         label: Role
         type: string
+      - name: body
+        label: Body
+        type: code
         
