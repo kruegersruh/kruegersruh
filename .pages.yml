@@ -28,6 +28,9 @@ content:
       - name: title
         label: Title
         type: string
+      - name: excerpt
+        label: Excerpt
+        type: string
       - name: datum
         label: Date
         type: date
