@@ -26,3 +26,13 @@ content:
       - name: datum
         label: Datum
         type: date
+      - name: cover
+        label: Cover
+        type: string
+      - name: author
+        label: Author
+        type: string
+      - name: role
+        label: Role
+        type: string
+        
