@@ -13,9 +13,8 @@ const blog = defineCollection({
     excerpt: z.string(),
     datum: z.coerce.date(),
     cover: image(),
-    author_name: z.string(),
-    author_image: z.string(), 
-    author_biography: z.string(), 
+    author: z.string(),
+    role: z.string(),
   }),
 })
 
