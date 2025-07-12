@@ -15,7 +15,7 @@ content:
     label: Blog
     path: src/content/blog
     type: collection
-    filename: '{year}-{month}-{day}-{primary}.mdx'
+    filename: '{year}-{month}-{day}_{primary}.mdx'
     view:
       fields: [ title ]
       primary: title
