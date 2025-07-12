@@ -3,7 +3,7 @@ import DefaultLayout from '@layouts/DefaultLayout.astro'
 import PageHeader from '@components/PageHeader.astro'
 import { Icon } from 'astro-icon/components'
 
-// https://code.juliancataldo.com/component/astro-geo-map/#doc
+//https://stackblitz.com/edit/withastro-astro-djgiyk
 ---
 
 <DefaultLayout title="Kontakt">
@@ -133,14 +133,15 @@ import { Icon } from 'astro-icon/components'
 <script>
     var items = ['birthdate', 'birthplace', 'nationality', 'zip', 'city', 'street', 'house', 'job', 'family', 'children', 'question'];
     document.addEventListener("astro:page-load", () => {
+        turnstile.render('#cf-turnstile', {
+            sitekey: "1x00000000000000000000AA",
+            callback: function(token) {
+                console.log(`Challenge Success ${token}`);
+            },
+        });
+
         var select = document.querySelector('#reason');
         
-        select?.addEventListener("load", (event) => {
-            console.log("load");
-           
-
-        })
-
         select?.addEventListener("change", (event) => {
             console.log("change");
 
