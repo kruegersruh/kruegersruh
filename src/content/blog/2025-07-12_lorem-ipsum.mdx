@@ -1,0 +1,37 @@
+---
+title: Lorem Ipsum
+excerpt: Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
+  nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed
+  diam voluptua.
+datum: 2025-07-12
+cover: "@images/annie-spratt-W3qM23z52OQ-unsplash.jpg"
+
+author: Martina Petersen
+role: Fachberatung
+---
+import { Image } from 'astro:assets'
+import { Media } from 'accessible-astro-components'
+import BlockQuote from '@components/ContentMedia.astro'
+import ContentMedia from '@components/ContentMedia.astro'
+import img_right from '@images/meggyn-pomerleau-hAYy2mFLjS8-unsplash.jpg'
+import img_left from '@images/ankith-choudhary-AbBZKCPzLQQ-unsplash.jpg'
+
+## At vero eos et accusam et justo duo dolores et ea rebum.
+
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+
+<ContentMedia src={img_left.src}>
+    <h2>Lorem Ipsum.</h2>
+    <p class="text-2xl">
+        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+    </p>
+</ContentMedia>
+
+<ContentMedia src={img_right.src} reverse={true}>
+    <h2>Lorem Ipsum.</h2>
+    <p class="text-2xl">
+      Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+    </p>
+</ContentMedia>
+
+<h2 class="cursive">Martina</h2>

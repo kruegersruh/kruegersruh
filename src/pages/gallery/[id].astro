@@ -1,0 +1,97 @@
+---
+import DefaultLayout from '@layouts/DefaultLayout.astro'
+import PageHeader from '@components/PageHeader.astro'
+import { getCollection } from "astro:content";
+import { Image, getImage } from 'astro:assets'
+
+export async function getStaticPaths() {
+  const gallery = await getCollection("gallery");
+  return Object.values(gallery).map((album) => {
+    return {
+      params: { id: album.id },
+      props: { album },
+    };
+  });
+}
+
+export async function getCover(id: string) {
+    let images = import.meta.glob<{ default: ImageMetadata }>(
+        "@content/gallery/**/*.{jpeg,jpg,png}"
+    );
+  
+    images = Object.fromEntries(
+      Object.entries(images).filter(([key]) => key.includes(id))
+    );
+  
+    const resolvedImages = await Promise.all(
+      Object.values(images).map((image) => image().then((mod) => mod.default))
+    );
+
+    resolvedImages.sort(() => Math.random() - 0.5);
+    return resolvedImages;
+  }
+
+const { album } = Astro.props;
+const images = await getCover(album.id);
+---
+
+<DefaultLayout title={album.data.title}>
+    <PageHeader
+        title={album.data.title}
+        subtitle={album.data.excerpt}
+      />
+    <section class="mt-5 mb-12">
+      <div class="container">
+        <div class="text-center my-16 mb-32">
+            <div id="gallery" class="container mx-auto sm:columns-2 md:columns-3 lg:columns-4 xl:columns-5" >
+            {
+                images.map(async (image) => (
+                   <a href={image.src}
+                    data-pswp-width={(await getImage({src: image, width: 1920})).attributes.width}
+                    data-pswp-height={(await getImage({src: image, width: 1920})).attributes.height}
+                    target="_blank"
+                    class="px-2 py-2"
+                  >
+                    <Image
+                      src={image}
+                      alt={`Foto aus ${album.data.title} Album`}
+                      width={450}
+                      class={"rounded-md border-[1px] border-primary hover:border-secondary object-cover w-full grayscale-[50%] hover:grayscale-0 transition duration-300 ease-in-out"}
+                      loading="lazy"
+                    /></a>
+                ))
+            }
+            </div>
+          </div>
+      </div>
+    </section>
+    <section>
+        <div class="container">
+            <div class="text-center my-16 mb-32">
+                <a class="button" href="/gallery">Hier geht's zurück zur Galerie.</a>
+            </div>
+        </div>
+    </section>
+  </DefaultLayout>
+
+  <script>
+    import PhotoSwipeLightbox from "photoswipe/lightbox";
+    import "photoswipe/style.css";
+  
+    let lightbox: PhotoSwipeLightbox;
+  
+    document.addEventListener("astro:page-load", () => {
+      lightbox = new PhotoSwipeLightbox({
+        gallery: "#gallery",
+        children: "a",
+        pswpModule: () => import("photoswipe"),
+      });
+  
+      lightbox.init();
+    });
+  
+    document.addEventListener("astro:before-swap", () => {
+      lightbox.destroy();
+    });
+  </script>
+

@@ -1,0 +1,16 @@
+---
+import DefaultLayout from '@layouts/DefaultLayout.astro'
+import PageHeader from '@components/PageHeader.astro'
+import Calendar from '@components/Calendar.tsx'
+---
+
+<DefaultLayout title="Kalender">
+  <PageHeader
+    title="Kalender"
+  />
+  <section class="mt-5 mb-12">
+    <div class="container">
+      <Calendar client:load />
+    </div>
+  </section>
+</DefaultLayout>

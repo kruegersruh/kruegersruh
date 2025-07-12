@@ -1,0 +1,42 @@
+---
+import DefaultLayout from '@layouts/DefaultLayout.astro'
+import PageHeader from '@components/PageHeader.astro'
+import { getCollection, render } from "astro:content";
+
+export async function getStaticPaths() {
+  const blog = await getCollection("blog");
+
+  return blog.map((item) => {
+
+    const post = {
+      ...item,
+      title: item.data.title.split(' ').slice(0, 4).join(' '),
+      excerpt: item.data.excerpt,
+      url: new Date(item.data.datum).toISOString().split('T')[0].replaceAll('-','') + '_' + item.data.title.split(' ').slice(0, 4).join(' ').replaceAll(' ', '-').toLowerCase(),
+      cover: item.data.cover,
+      author: {name: item.data.author, role: item.data.role}
+    }
+
+    return {
+      params: { post: post.url },
+      props: { post },
+    }
+  })
+}
+
+const { post } = Astro.props
+const { Content } = await render(post)
+---
+
+<DefaultLayout title={post.title} description={post.body} url={post.url}>
+  <PageHeader
+    title={post.title}
+    subtitle={post.excerpt}
+    author={post.author}
+  />
+  <section class="mt-5 mb-20">
+    <div class="narrow container">
+      <Content />
+    </div>
+  </section>
+</DefaultLayout>

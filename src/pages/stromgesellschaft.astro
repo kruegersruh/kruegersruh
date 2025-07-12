@@ -1,0 +1,86 @@
+---
+import DefaultLayout from '@layouts/DefaultLayout.astro'
+import PageHeader from '@components/PageHeader.astro'
+import { Icon } from 'astro-icon/components'
+import { Accordion, AccordionItem, Card } from 'accessible-astro-components'
+
+import user_m from '@graphics/design/user_m.png'
+import user_f from '@graphics/design/user_f.png'
+---
+
+<DefaultLayout title="Stromgesellschaft">
+    <PageHeader
+      title="Stromgesellschaft"
+    />
+    <section class="mt-5 mb-12">
+        <div class="container">
+            <h2>Geschäftsführer<br/>gem. § 710 BGB</h2>
+            <br/>
+            <div class="container flex flex-col gap-20 md:flex-row md:justify-left">
+                <Card
+                    img={user_m.src}
+                    title="Driss el Badaoui"
+                    url="javascript: void(0)"
+                    >
+                    <span slot="meta">
+                        <Icon name="lucide:zap" />
+                        Geschäftsführer (kaufm.)
+                    </span>
+                    Auf dem Dorn 42,<br/>30165 Hannover<br/>
+                    Telefon: +491722574834<br/>
+                    E-Mail-Adresse: -
+                </Card>
+                <Card
+                    img={user_m.src}
+                    title="Thomas Stukowski"
+                    url="javascript: void(0)"
+                    >
+                    <span slot="meta">
+                        <Icon name="lucide:zap" />
+                        Geschäftsführer (tech.)
+                    </span>
+                    Engelbosteler Damm 101a,<br/>30167 Hannover<br/>
+                    Telefon: +491725612014<br/>
+                    E-Mail-Adresse: -
+                </Card>
+            </div>
+        </div>
+    </section>
+    <section class="mt-5 mb-12"> 
+      <div class="container">
+        <Accordion>
+          <AccordionItem
+              title="Was macht die Stromgesellschaft?"
+              variant="chevron"
+              open
+              >
+              <p>
+                Die Stromgesellschaft des Kleingärtnervereins Krügersruh e. V. ist für die elektrische Versorgung der Kleingärten, den Erhalt der Leitungen und die Jahresabrechnung der Verbräuche zuständig. Aktuell besteht die Stromgesellschaft aus 127 Gesellschaftern; davon sind 119 Mitglieder im Kleingärnerverein Krügersruh e. V. und 8 Nichtmitglieder.
+              </p>
+            </AccordionItem>
+            <AccordionItem
+              title="Was ist bei einem Stromausfall zu tun?"
+              variant="chevron"
+              >
+              <p>
+                Bitte wende dich an Thomas Stukowski.
+              </p>
+            </AccordionItem>
+            <AccordionItem
+                title="Wann erfolgt die Wartung der Stromanlage?"
+                variant="chevron"
+                >
+                <p>
+                  Bitte wende dich an Thomas Stukowski.
+                </p>
+            </AccordionItem>
+          </Accordion>
+      </div>
+    </section>
+  </DefaultLayout>
+
+  <style>
+    .card {
+        flex-basis: 30%;
+        }
+  </style>

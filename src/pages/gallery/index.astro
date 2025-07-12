@@ -1,0 +1,41 @@
+---
+import DefaultLayout from '@layouts/DefaultLayout.astro'
+import PageHeader from '@components/PageHeader.astro'
+import { getCollection } from "astro:content";
+import { Card } from 'accessible-astro-components'
+
+// https://github.com/johny/astro-photo-gallery-example/
+
+const gallery = await getCollection("gallery");
+---
+
+<DefaultLayout title="Fotogallerie">
+  <PageHeader
+      title="Fotogallerie"
+    />
+  <section class="mt-5 mb-12">
+    <div class="container">
+      <div class="p-8">
+        
+        <div class="container text-center flex flex-col gap-20 md:flex-row md:justify-left">
+          {
+            gallery.map((item) => (
+              <Card
+                imageComponent={item.data.cover}
+                url={`/gallery/${item.id}`}
+                title={item.data.title}
+              >
+              </Card>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </section>
+</DefaultLayout>
+
+<style>
+  .card {
+      flex-basis: 30%;
+      }
+</style>

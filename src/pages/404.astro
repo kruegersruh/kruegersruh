@@ -1,0 +1,22 @@
+---
+import DefaultLayout from '@layouts/DefaultLayout.astro'
+import { Image } from 'astro:assets'
+import img_404 from '@graphics/design/404.png'
+---
+
+<DefaultLayout title="404">
+  <section class="my-12 text-center">
+    <div class="container flex justify-center">
+      <div>
+        <Image src={img_404} alt="" width={300} height={300} decoding="async" loading="eager" />
+      </div>
+    </div>
+  </section>
+  <section class="my-12 text-center">
+    <div class="container space-content">
+      <h1>404</h1>
+      <p class="text-2xl">Leider existiert die Seite nicht (mehr).</p>
+      <a class="button" href="/">Hier geht's zurück zur Startseite.</a>
+    </div>
+  </section>
+</DefaultLayout>

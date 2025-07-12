@@ -1,0 +1,43 @@
+---
+import DefaultLayout from '@layouts/DefaultLayout.astro'
+import PageHeader from '@components/PageHeader.astro'
+import { Accordion, AccordionItem } from 'accessible-astro-components'
+import Calendar from '@components/CalendarForParty.tsx'
+import SponsorBlock from '@components/SponsorBlock.astro' 
+---
+
+<DefaultLayout title="Festausschuss">
+  <PageHeader
+      title="Festausschuss"
+      subtitle="Im Kleingärtnerverein Krügersruh e. V. werden jährlich diverse Feste ausgerichtet. <b>Egal ob Mitglied oder nicht: Wir freuen uns über alle Festbesucher!"
+    />
+  <section class="my-0">
+    <div class="container">
+      <Calendar client:load />
+    </div>
+  </section>
+  <section class="mt-5 mb-12"> 
+    <div class="container">
+      <Accordion>
+        <AccordionItem
+            title="Wie kann ich mich zu Veranstaltungen anmelden?"
+            variant="chevron"
+            open
+            >
+            <p>
+              Eine Anmeldung zu Veranstaltungen ist über Katy Kuhlmann via Telefon oder WhatsApp an +4915238576418, via E-Mail an festausschuss.kruegersruh@web.de oder via Nachricht in den Briefkaste des Vereinsheims möglich.
+            </p>
+          </AccordionItem>
+          <AccordionItem
+            title="Wie kann ich unterstützen?"
+            variant="chevron"
+            >
+            <p>
+              Bitte wende dich an Katy Kuhlmann unter +4915238576418 oder alternativ an Peggy Reuß +4915783925264 oder Manuel Vergel Sanchez unter +491633790001.
+            </p>
+          </AccordionItem>
+        </Accordion>
+    </div>
+    <SponsorBlock/>
+  </section>
+</DefaultLayout>

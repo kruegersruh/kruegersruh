@@ -1,0 +1,254 @@
+---
+import DefaultLayout from '@layouts/DefaultLayout.astro'
+import PageHeader from '@components/PageHeader.astro'
+import { Icon } from 'astro-icon/components'
+import { Card } from 'accessible-astro-components'
+
+import user_0 from '@graphics/design/user_0.png'
+import user_m from '@graphics/design/user_m.png'
+import user_f from '@graphics/design/user_f.png'
+
+---
+
+<DefaultLayout title="Vorstand">
+    <PageHeader
+      title="Vorstand"
+    />
+    <section class="mt-5 mb-12">
+        <div class="container">
+            <h2>Geschäftsführender Vorstand <br/>gem. § 26 BGB</h2>
+            <br/>
+            <div class="container flex flex-col gap-20 md:flex-row md:justify-left">
+                <Card
+                    img={user_0.src}
+                    title="Uwe Metz"
+                    url="javascript: void(0)"
+                    >
+                    <span slot="meta">
+                        <Icon name="lucide:user" />
+                        1. Vorstandsvorsitzender
+                    </span>
+                    Telefon: +4917681221787<br/>
+                    E-Mail-Adresse: -
+                </Card>
+                <Card
+                    img={user_m.src}
+                    title="Andreas Vierk"
+                    url="javascript: void(0)"
+                    >
+                    <span slot="meta">
+                        <Icon name="lucide:user" />
+                        2. Vorstandsvorsitzender
+                    </span>
+                    Telefon: +491725425237<br/>
+                    E-Mail-Adresse: -
+                </Card>
+            </div>
+            <br/>
+            <div class="container flex flex-col gap-20 md:flex-row md:justify-left">
+                <Card
+                    img={user_m.src}
+                    title="Wilfried Oppermann"
+                    url="javascript: void(0)"
+                    >
+                    <span slot="meta">
+                        <Icon name="lucide:coins" />
+                        1. Kassierer
+                    </span>
+                    Telefon: +491739130307<br/>
+                    E-Mail-Adresse: -
+                </Card>
+                <Card
+                    img={user_m.src}
+                    title="Ralph Read"
+                    url="javascript: void(0)"
+                    >
+                    <span slot="meta">
+                        <Icon name="lucide:pencil" />
+                        1. Schriftführer
+                    </span>
+                    Telefon: - <br/>
+                    E-Mail-Adresse: daniel_ralph_read@yahoo.de
+                </Card>
+            </div>
+        </div>
+    </section>
+    <section class="mt-5 mb-12">
+        <div class="container">
+            <h2>Beisitzer</h2>
+            <br/>
+            <div class="container flex flex-col gap-20 md:flex-row md:justify-left">
+                <Card
+                    img={user_f.src}
+                    title="Rosa Konrad"
+                    url="javascript: void(0)"
+                    >
+                    <span slot="meta">
+                        <Icon name="lucide:coins" />
+                        2. Kassiererin
+                    </span>
+                    Dahlienweg 197 <br/>
+                    Telefon: +4915238576418 <br/>
+                    E-Mail-Adresse: -
+                </Card>
+                <Card
+                    img={user_m.src}
+                    title="Henrik Berthold"
+                    url="javascript: void(0)"
+                    >
+                    <span slot="meta">
+                        <Icon name="lucide:pencil" />
+                        2. Schriftführer
+                    </span>
+                    Dahlienweg 185 <br/>
+                    Telefon: +4915238576418 <br/>
+                    E-Mail-Adresse: -
+                </Card>
+            </div>
+            <br/>
+            <div class="container flex flex-col gap-20 md:flex-row md:justify-left">
+                <Card
+                    img={user_f.src}
+                    title="Martina Petersen"
+                    url="javascript: void(0)"
+                    >
+                    <span slot="meta">
+                        <Icon name="lucide:book-open-text" />
+                        Fachberatung
+                    </span>
+                    Telefon: +4915164009625 <br/>
+                    E-Mail-Adresse: -
+                </Card>
+            </div>
+        </div>
+    </section>
+    <section class="mt-5 mb-12">
+        <div class="container">
+            <h2>Abteilungen</h2>
+            <br/>
+            <div class="container flex flex-col gap-20 md:flex-row md:justify-left">
+                <Card
+                    img={user_f.src}
+                    title="Peggy Reuß"
+                    url="javascript: void(0)"
+                    >
+                    <span slot="meta">
+                        <Icon name="lucide:house" />
+                        Vereinshausverwaltung
+                    </span>
+                    Telefon: +4915783925264 <br/>
+                    E-Mail-Adresse: -
+                </Card>
+                <Card
+                    img={user_f.src}
+                    title="Katy Kuhlmann"
+                    url="/festausschuss"
+                    >
+                    <span slot="meta">
+                        <Icon name="lucide:party-popper" />
+                        Festausschuss
+                    </span>
+                    Dahlienweg 200 <br/>
+                    Telefon: +4915238576418 <br/>
+                    E-Mail-Adresse: -
+                </Card>
+            </div>
+            <br/>
+            <div class="container flex flex-col gap-20 md:flex-row md:justify-left">
+                <Card
+                    img={user_m.src}
+                    title="Hans-Joachim Rezepka"
+                    url="/gemeinschaftsarbeit"
+                    >
+                    <span slot="meta">
+                        <Icon name="lucide:flag" />
+                        Fahnenabordnung
+                    </span>
+                    Telefon: +491703450117<br/>
+                    E-Mail-Adresse: -
+                </Card>
+                <Card
+                    img={user_m.src}
+                    title="Ralph Read"
+                    url="javascript: void(0)"
+                    >
+                    <span slot="meta">
+                        <Icon name="lucide:cpu" />
+                        Medien & Technik
+                    </span>
+                    Telefon: -<br/>
+                    E-Mail-Adresse: -
+                </Card>
+            </div>
+        </div>
+    </section>
+    <section class="mt-5 mb-12">
+        <div class="container">
+            <h2>Wegbegleiter</h2>
+            <br/>
+            <div class="container flex flex-col gap-20 md:flex-row md:justify-left">
+                <Card
+                    img={user_m.src}
+                    title="Markus Schüttkow"
+                    url="javascript: void(0)"
+                    >
+                    <span slot="meta">
+                        <Icon name="lucide:flower-2" />
+                        Dahlienweg
+                    </span>
+                    Dahlienweg 176 <br/>
+                    Telefon: -<br/>
+                    E-Mail-Adresse: -
+                </Card>
+                <Card
+                    img={user_m.src}
+                    title="Hans-Joachim Rezepka"
+                    url="javascript: void(0)"
+                    >
+                    <span slot="meta">
+                        <Icon name="lucide:flower-2" />
+                        Primel-  und Nelkenweg
+                    </span>
+                    Primelweg 155 <br/>
+                    Telefon: -<br/>
+                    E-Mail-Adresse: -
+                </Card>
+            </div>
+            <br/>
+            <div class="container flex flex-col gap-20 md:flex-row md:justify-left">
+                <Card
+                    img={user_m.src}
+                    title="Wolfgang Arendt"
+                    url="javascript: void(0)"
+                    >
+                    <span slot="meta">
+                        <Icon name="lucide:flower-2" />
+                        Astern- und Veilchenweg
+                    </span>
+                    Asternweg 117 <br/>
+                    Telefon: +4915238576418 <br/>
+                    E-Mail-Adresse: -
+                </Card>
+                <Card
+                    img={user_m.src}
+                    title="Thomas Stukowski"
+                    url="javascript: void(0)"
+                    >
+                    <span slot="meta">
+                        <Icon name="lucide:flower-2" />
+                        Maiblumen- und Tulpenweg
+                    </span>
+                    Maiblumenweg 70 <br/>
+                    Telefon: +4915238576418 <br/>
+                    E-Mail-Adresse: -
+                </Card>
+            </div>
+        </div>
+    </section>
+  </DefaultLayout>
+
+  <style>
+    .card {
+        flex-basis: 30%;
+        }
+  </style>

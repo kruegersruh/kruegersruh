@@ -1,0 +1,48 @@
+---
+import DefaultLayout from '@layouts/DefaultLayout.astro'
+import PageHeader from '@components/PageHeader.astro'
+import { Accordion, AccordionItem } from 'accessible-astro-components'
+import Calendar from '@components/CalendarForWork.tsx'
+---
+
+<DefaultLayout title="Gemeinschaftsarbeit">
+  <PageHeader
+      title="Gemeinschaftsarbeit"
+      subtitle="Gemeinschaftsarbeit ist Pflichtarbeit nach § 3 Abs. 5 der Vereinssatzung."
+    />
+  <section class="mt-5 mb-12">
+    <div class="container">
+      <p>Im Verhinderungsfall ist für eine Ersatzkraft zu sorgen. Laut Versammlungsbeschluss vom 20. März 2022 ist für jede nicht geleistete festgelegte Gemeinschaftsarbeit ein Betrag von <b>100,-- €</b> zu entrichten. Außerdem ist für den erhöhten Verwaltungsaufwand eine Verwaltungspauschale von <b>7,50 €</b> zu zahlen. Dies gilt auch, wenn eine Ersatzkraft nicht an den Arbeiten teilnimmt. Der Betrag wird mit der jeweiligen Jahresrechnung als einmalige Beitragserhöhung zusätzlich eingezogen.</p>
+        <br/>
+        <p>In der Regel findet die Gemeinschaftsarbeit vier Mal im Jahr <b>am vierten Sonnabend der Monate April, Juni, August und Oktober</b> statt, jedoch kann Gemeinschaftsarbeit aufgrund von Festvorbereitungen auch zu anderen Terminen erforderlich sein.</p>
+    </div>
+  </section>
+  <section class="my-0">
+    <div class="container">
+      <Calendar client:load />
+    </div>
+  </section>
+  <section class="mt-5 mb-12"> 
+    <div class="container">
+      <Accordion>
+        <AccordionItem
+            title="Wie kann ich mich zur Gemeinschaftsarbeit anmelden?"
+            variant="chevron"
+            open
+            >
+            <p>
+              Jedes Vereinsmitglied kann sich bereits im Vorfeld zwecks Terminvereinbarung an Hans-Joachim Rezepka unter +491703450117 oder alternativ den Vorstandsvorsitzenden Uwe Metz unter +4917681221787 wenden. Eine Anmeldung zu den gemäß Kalender verfügbaren Terminen ist bis zu vier Wochen vor dem jeweiligen Termin möglich.
+            </p>
+          </AccordionItem>
+          <AccordionItem
+            title="Was muss ich zur Gemeinschaftsarbeit mitbringen?"
+            variant="chevron"
+            >
+            <p>
+              Bitte bringe Gartengeräte (Spaten, Harke, Hacke, Schubkarre, Gartenschere, Heckenschere etc.) und Arbeitsschutzkleidung wie z. B. Handschuhe mit.
+            </p>
+          </AccordionItem>
+        </Accordion>
+    </div>
+  </section>
+</DefaultLayout>

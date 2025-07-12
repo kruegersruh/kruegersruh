@@ -1,0 +1,52 @@
+media:
+  - name: images
+    label: Images
+    input: src/content/images
+    output: /src/content/images
+    extensions: [ jpeg, jpg, png ]
+  - name: gallery
+    label: Gallery
+    input: src/content/gallery
+    output: /src/content/gallery
+    extensions: [ jpeg, jpg, png ]
+
+content:
+  - name: blog
+    label: Blog
+    path: src/content/blog
+    type: collection
+    filename: '{year}-{month}-{day}_{primary}.mdx'
+    view:
+      fields: [ title ]
+      primary: title
+      sort: [ datum, title ]
+      default:
+        search: ''
+        sort: title
+        order: asc
+    fields:
+      - name: title
+        label: Title
+        type: string
+      - name: excerpt
+        label: Excerpt
+        type: string
+      - name: datum
+        label: Date
+        type: date
+      - name: cover
+        label: Cover
+        type: string
+        default: '@images/annie-spratt-W3qM23z52OQ-unsplash.jpg'
+      - name: author
+        label: Author
+        type: string
+      - name: role
+        label: Role
+        type: string
+      - name: body
+        label: Body
+        type: code
+        options:
+          language: md
+        

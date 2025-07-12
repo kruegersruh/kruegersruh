@@ -1,0 +1,86 @@
+---
+import DefaultLayout from '@layouts/DefaultLayout.astro'
+import PageHeader from '@components/PageHeader.astro'
+import type { PaginateFunction, Page } from 'astro'
+import { getCollection } from "astro:content";
+import { Card, Pagination } from 'accessible-astro-components'
+
+export async function getStaticPaths({ paginate }: { paginate: PaginateFunction }) {
+  const blog = (await getCollection("blog")).sort((x, y) => y.data.datum.valueOf() - x.data.datum.valueOf());
+
+  const posts = blog.slice(0, 30).map((item) => {
+    return {
+      ...item,
+      title: item.data.title.split(' ').slice(0, 4).join(' '),
+      excerpt: item.data.excerpt,
+      url: new Date(item.data.datum).toISOString().split('T')[0].replaceAll('-','') + '_' + item.data.title.split(' ').slice(0, 4).join(' ').replaceAll(' ', '-').toLowerCase(),
+      cover: item.data.cover,
+      datum: new Date(item.data.datum).toLocaleDateString("de-DE", {year: "numeric", month: "long", day: "2-digit"})
+    }
+  })
+
+  return paginate(posts, { pageSize: 6 })
+}
+
+const { page } = Astro.props;
+---
+
+<DefaultLayout
+  title="Blog">
+  <PageHeader
+    title="Blog"
+    subtitle='Hier ist der Blog der Fachberatung mit interessanten Eindrücken aus dem Kleingartenwesen sowie hilfreichen Tipps.'
+  />
+
+  <section class="my-12">
+    <div class="container">
+      <p class="text-sm"><em>{page.end + 1} von {page.total} Posts.</em></p>
+      <ul class="container flex flex-col gap-20 md:flex-row md:justify-left">
+        {
+          page.data.map((item) => (
+            <li>
+              <Card
+                imageComponent={item.cover}
+                url={'/blog/' + item.url}
+                title={item.title}>
+                  <div>
+                    {item.datum}<br/>
+                    {item.excerpt}
+                  </div>
+                
+              </Card>
+            </li>
+          ))
+        }
+      </ul>
+      <div class="mt-12 grid place-content-center">
+        <Pagination
+          firstPage={page.url.prev ? '/blog' : null}
+          previousPage={page.url.prev ? page.url.prev : null}
+          nextPage={page.url.next ? page.url.next : null}
+          lastPage={page.url.next ? `/blog/${Math.ceil(page.total / page.size)}` : null}
+          currentPage={`${page.currentPage}`}
+          totalPages={`${Math.ceil(page.total / page.size)}`}
+          ariaLabel="Blog Pagination"
+        />
+      </div>
+    </div>
+  </section>
+</DefaultLayout>
+
+<style lang="scss" is:global>
+  @use '@assets/scss/base/mixins' as *;
+
+  .card {
+    flex-basis: 30%;
+    
+    h3 {
+      margin-block-end: var(--space-xs);
+      line-height: 0.75;
+    }
+
+    a {
+      @include text-decoration(transparent, var(--foreground-color), 4px, 2px);
+    }
+  }
+</style>
