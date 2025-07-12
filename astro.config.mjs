@@ -4,7 +4,6 @@ import compress from 'astro-compress'
 import icon from 'astro-icon'
 import tailwindcss from '@tailwindcss/vite'
 import { fileURLToPath } from 'url'
-
 import react from '@astrojs/react';
 
 // https://astro.build/config

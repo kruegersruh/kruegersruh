@@ -29,11 +29,5 @@ const gallery = defineCollection({
     }),
 });
 
-const images = defineCollection({
-  type: "data",
-  schema: ({ image }) =>
-    image()
-});
-
 // 4. Export a single `collections` object to register you collection(s)
-export const collections = { blog, gallery, images }
+export const collections = { blog, gallery }

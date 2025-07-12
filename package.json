@@ -60,6 +60,8 @@
   },
   "dependencies": {
     "@astrojs/react": "^4.3.0",
+    "@cloudflare/pages-plugin-static-forms": "^1.0.3",
+    "@cloudflare/pages-plugin-turnstile": "^1.0.2",
     "@fullcalendar/core": "^6.1.18",
     "@fullcalendar/daygrid": "^6.1.18",
     "@fullcalendar/google-calendar": "^6.1.18",
@@ -74,6 +76,8 @@
     "accessible-astro-components": "^4.1.2",
     "photoswipe": "^5.4.4",
     "react": "^19.1.0",
-    "react-dom": "^19.1.0"
+    "react-dom": "^19.1.0",
+    "resend": "^4.6.0",
+    "vanilla-cookieconsent": "^3.1.0"
   }
 }

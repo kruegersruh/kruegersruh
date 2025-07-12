@@ -1,0 +1,14 @@
+---
+import 'vanilla-cookieconsent/dist/cookieconsent.css';
+import '../styles/cookieconsent.css';
+
+//https://playground.cookieconsent.orestbida.com/
+//https://github.com/orestbida/cookieconsent/issues/728
+//https://stackblitz.com/edit/withastro-astro-mvdsyj
+---
+<script>
+    import { run } from 'vanilla-cookieconsent';
+    import { config } from './CookieConsentConfig';
+    document.body.classList.add('cc--dark-turquoise');
+    run(config);
+</script>
