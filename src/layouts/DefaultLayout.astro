@@ -23,8 +23,8 @@ const {
     <meta name="generator" content={Astro.generator} />
     <!-- favicon -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-
     <SiteMeta title={title} description={description.substring(0, 100)} url={url} image={image} author={author} />
+    <script is:inline src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit" async defer></script>
   </head>
   <body>
     <Header />
@@ -42,7 +42,6 @@ const {
             event.newDocument.documentElement.className = window._htmlClassName;
           });
         </script>
-        <script is:inline src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit" async defer></script>
       </div> 
     </main>
     <Footer />
