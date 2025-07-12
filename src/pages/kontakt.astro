@@ -133,6 +133,14 @@ import { Icon } from 'astro-icon/components'
 <script>
     var items = ['birthdate', 'birthplace', 'nationality', 'zip', 'city', 'street', 'house', 'job', 'family', 'children', 'question'];
     document.addEventListener("astro:page-load", () => {
+        turnstile.render('#cf-turnstile', {
+            sitekey: "0x4AAAAAABkptrMr8aWEa-wN",
+            callback: function(token) {
+                console.log(`Challenge Success ${token}`);
+            },
+        });
+
+
         var select = document.querySelector('#reason');
         
         select?.addEventListener("change", (event) => {
