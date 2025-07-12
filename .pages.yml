@@ -18,4 +18,4 @@ content:
       default:
         search: ''
         sort: title
-        order: desc
+        order: asc
