@@ -4,3 +4,10 @@ media:
     input: src/content/gallery
     output: /src/content/gallery
     extensions: [ jpeg, jpg, png ]
+
+content:
+  - name: blog
+    label: Blog
+    path: src/content/blog
+    type: collection
+    fields: [title, excerpt, datum, cover]
