@@ -14,7 +14,7 @@ export async function getStaticPaths() {
       excerpt: item.data.excerpt,
       url: new Date(item.data.datum).toISOString().split('T')[0].replaceAll('-','') + '_' + item.data.title.split(' ').slice(0, 4).join(' ').replaceAll(' ', '-').toLowerCase(),
       cover: item.data.cover,
-      author: {name: item.data.author_name, image: item.data.author_image, biography: item.data.author_biography}
+      author: {name: item.data.author, role: item.data.role}
     }
 
     return {
