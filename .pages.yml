@@ -1,0 +1,6 @@
+media:
+  - name: images
+    label: Images
+    input: content/gallery
+    output: /content/gallery
+    extensions: [ jpeg, jpg, png ]
