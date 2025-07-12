@@ -14,7 +14,7 @@ const blog = defineCollection({
     datum: z.coerce.date(),
     cover: image(),
     author: z.string(),
-    role: z.string(),
+    role: z.string()
   }),
 })
 
@@ -24,7 +24,7 @@ const gallery = defineCollection({
     z.object({
       title: z.string(),
       excerpt: z.string().optional(),
-      cover: image(),
+      cover: image()
     }),
 });
 
