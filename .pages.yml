@@ -19,3 +19,10 @@ content:
         search: ''
         sort: title
         order: asc
+    fields:
+      - name: title
+        label: Title
+        type: string
+      - name: datum
+        label: Datum
+        type: date
