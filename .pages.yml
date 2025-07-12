@@ -37,6 +37,7 @@ content:
       - name: cover
         label: Cover
         type: string
+        default: '@images/src\content\images\annie-spratt-W3qM23z52OQ-unsplash.jpg'
       - name: author
         label: Author
         type: string
