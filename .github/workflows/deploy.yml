@@ -8,6 +8,8 @@ on:
     branches: [ main ]
   # Allows you to run this workflow manually from the Actions tab on GitHub.
   workflow_dispatch:
+  schedule:
+    - cron: * 4,10,16,22 * * *
 
 # Allow this job to clone the repo and create a page deployment
 permissions:
