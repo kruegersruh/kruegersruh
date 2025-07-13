@@ -1,6 +1,9 @@
 import type { CookieConsentConfig } from 'vanilla-cookieconsent';
 
 export const config: CookieConsentConfig = {
+  root: '#cc-container',
+
+  disablePageInteraction: true,
   guiOptions: {
     consentModal: {
       layout: 'box inline',

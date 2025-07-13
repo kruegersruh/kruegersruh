@@ -4,7 +4,6 @@ import '@assets/scss/index.scss'
 import SiteMeta from '@components/SiteMeta.astro'
 import Header from '@components/Header.astro'
 import Footer from '@components/Footer.astro'
-import CookieConsent from '@components/CookieConsent.astro';
 
 const {
   title = 'Kruegersruh',
@@ -17,33 +16,20 @@ const {
 
 <html lang="en" dir="ltr">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <meta name="generator" content={Astro.generator} />
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <meta name="generator" content={Astro.generator}/>
     <!-- favicon -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <SiteMeta title={title} description={description.substring(0, 100)} url={url} image={image} author={author} />
+    <SiteMeta title={title} description={description.substring(0, 100)} url={url} image={image} author={author}/>
   </head>
   <body>
     <Header />
     <main id="main-content" transition:animate="fade">
-      <slot />
-      <div transition:persist id="cc-container">
-        </br>
-        <CookieConsent />
-        <script is:inline>
-          document.addEventListener('astro:before-preparation', event => {
-            window._htmlClassName = window.document.documentElement.className;
-          });
-
-          document.addEventListener('astro:before-swap', event => {
-            event.newDocument.documentElement.className = window._htmlClassName;
-          });
-        </script>
-      </div> 
+      <slot/>
     </main>
-    <Footer />
+    <Footer/>
     <style lang="scss" is:global>
       html,
       body {

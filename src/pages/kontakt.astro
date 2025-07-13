@@ -2,6 +2,7 @@
 import DefaultLayout from '@layouts/DefaultLayout.astro'
 import PageHeader from '@components/PageHeader.astro'
 import { Icon } from 'astro-icon/components'
+import CookieConsent from '@components/CookieConsent.astro';
 
 //https://flaviocopes.com/using-cloudflare-turnstile-on-a-astro-form/
 ---
@@ -11,6 +12,7 @@ import { Icon } from 'astro-icon/components'
     title="Kontakt"
   />
   <section class="mt-5 mb-12">
+    <CookieConsent/>
     <div class="container">
         <form action="https://submit-form.com/Webfrhcc4" method="POST">
             <form action="https://formspree.io/f/meozjjkj" method="POST">
