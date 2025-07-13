@@ -59,13 +59,13 @@ export const config: CookieConsentConfig = {
             {
               title: 'Einsatz von Cookies',
               description:
-                'Auf der Website werden notwendige und funktionale Elemente eingesetzt, die für den allgemeinen Betrieb oder zur Verbesserung von Funktionalitäten eingesetzt werden.',
+                'Auf der Website werden notwendige Elemente zur Bereitstellung und Prüfung des Kontaktformulars eingesetzt.',
             },
             {
               title:
                 'Notwendig <span class="pm__badge">Immer aktiviert.</span>',
               description:
-                'Hier sind alle Elemente zu finden, die für den Betrieb der Website notwendig sind oder für die der Betreiber ein berechtigtes Interesse nach Art. 6 Abs. 1 DSGVO hat.',
+                'Hier finden sich alle für den Betrieb des Kontaktformulars notwendigen Elemente.',
               linkedCategory: 'necessary',
             },
           ],
