@@ -11,7 +11,7 @@ console.log(img_default);
 const images = import.meta.glob<{ default: ImageMetadata }>('/src/content/images/*.{jpeg,jpg,png,gif}')
 
 const data = await fetch("https://opensheet.elk.sh/19ZpR0tDDIygHf2JtfKnFc6NznlwljL05erhcrY0ePUs/FREIE_GAERTEN").then((response) => response.json());
-
+console.log("w"+ data);
 ---
 <DefaultLayout title="Freie Gärten">
   <PageHeader
@@ -20,6 +20,7 @@ const data = await fetch("https://opensheet.elk.sh/19ZpR0tDDIygHf2JtfKnFc6Nznlwl
     />
     <section class="mt-5 mb-12"> 
       <div class="container flex flex-col gap-10 md:justify-left">
+        {!data.length && <h4>Aktuell keine freien Gärten.</h4>}
         {data.map(async (garden:any) => { 
           const _images = await Promise.all(
                       Object.values(Object.fromEntries(Object.entries(images).filter(([key]) => key.includes(garden.ADDRESS.replace(' ', '_'))))
@@ -36,7 +37,8 @@ const data = await fetch("https://opensheet.elk.sh/19ZpR0tDDIygHf2JtfKnFc6Nznlwl
               </span>
 
               <span>Größe: {garden.SIZE} m²</span><br/>
-              <span>Schätzsumme: {garden.COST}</span>
+              <span>Schätzsumme: {garden.COST}</span><br/>
+              <span>Jahreskosten: ca. {Math.ceil(0.50 * garden.SIZE + 110 + 98 + 3.10 + 50)} €</span>
               <p>{garden.INFO}</p>
 
               <div id="gallery" class="container mx-auto sm:columns-2 md:columns-3 lg:columns-4 xl:columns-5" >
