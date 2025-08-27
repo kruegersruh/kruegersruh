@@ -1,0 +1,5 @@
+﻿{
+  "Description": "Überprüfungsdatei für Domänen-Eigentümerschaft für Microsoft 365-Position im Website-Root",
+  "Domain": "kruegersruh.de",
+  "Id": "95b77c7a-a952-4661-b3cf-39acb31896c0"
+}
