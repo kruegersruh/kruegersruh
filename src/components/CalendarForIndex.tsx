@@ -11,8 +11,8 @@ import googleCalendarPlugin from '@fullcalendar/google-calendar'
 // https://dateutil.readthedocs.io/en/stable/rrule.html
 // https://fullcalendar.io/docs/google-calendar
 
-var count = 0;
 export default function Calendar() {
+  var count = 0;
   return (
     <FullCalendar
       plugins={[ googleCalendarPlugin, rrulePlugin, listPlugin ]}

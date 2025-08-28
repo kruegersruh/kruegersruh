@@ -1,0 +1,243 @@
+---
+import DefaultLayout from '@layouts/DefaultLayout.astro'
+import PageHeader from '@components/PageHeader.astro'
+import { Icon } from 'astro-icon/components'
+import CookieConsent from '@components/CookieConsent.astro';
+//https://flaviocopes.com/using-cloudflare-turnstile-on-a-astro-form/
+---
+
+<DefaultLayout title="Kontakt">
+  <PageHeader
+    title="Kontakt"
+  />
+  <section class="mt-5 mb-12">
+    <CookieConsent/>
+    <div class="container">
+        <form action="https://submit-form.com/Webfrhcc4" method="POST">
+            <form action="https://formspree.io/f/meozjjkj" method="POST">
+            <input type="hidden" name="_redirect" value="https://kruegersruh.de/success" />
+            <input type="hidden" name="_error" value="https://kruegersruh.de/error" />
+            <input type="hidden" name="_append" value="false" />
+            <div class="container">
+                <div class="flex-container">
+                    <div>
+                        <label for="reason"><b>Kontaktgrund</b></label>
+                        <select class="border-r-8" id="reason" name="reason" required>
+                            <option value="Anfrage">Anfrage</option>
+                            <option value="Bewerbung">Bewerbung</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="flex-container">
+                    <div>
+                        <label for="firstname">Vorname</label>
+                        <input class="field" type="text" id="firstname" name="firstname" required>
+                    </div>
+                    <div>
+                        <label for="lastname">Nachname</label>
+                        <input type="text" id="lastname" name="lastname" required>
+                    </div>
+                </div>
+                <div class="flex-container" class="birth" hidden>
+                    <div>
+                        <label for="birthdate">Geburtsdatum</label>
+                        <input type="date" id="birthdate" name="birthdate">
+                    </div>
+                    <div>
+                        <label for="birthplace">Geburtsort</label>
+                        <input type="text" id="birthplace" name="birthplace">
+                    </div>
+                </div>
+                <div class="flex-container" hidden>
+                    <div>
+                        <label for="nationality">Staatsangehörigkeit</label>
+                        <input type="text" id="nationality" name="nationality">
+                    </div>
+                </div>
+                <div class="flex-container" hidden>
+                    <div>
+                        <label for="zip">Postleitzahl</label>
+                        <input type="text" id="zip" name="zip" pattern="[0-9]{5}">
+                    </div>
+                    <div>
+                        <label for="city">Ort</label>
+                        <input type="text" id="city" name="city">
+                    </div>
+                </div>
+                <div class="flex-container" hidden>
+                    <div>
+                        <label for="street">Straße</label>
+                        <input type="text" id="street" name="street">
+                    </div>
+                    <div>
+                        <label for="house">Hausnummer</label>
+                        <input type="text" id="house" name="house">
+                    </div>
+                </div>
+                <div class="flex-container">
+                    <div>
+                        <label for="phone">Telefon</label>
+                        <input type="tel" id="phone" name="phone" required>
+                    </div>
+                    <div>
+                        <label for="mail">E-Mail</label>
+                        <input type="email" id="mail" name="mail" required>
+                    </div>
+                </div>
+                <div class="flex-container" hidden>
+                    <div>
+                        <label for="job">Beruf</label>
+                        <input type="text" id="job" name="job">
+                    </div>
+                </div>
+                <div class="flex-container" hidden>
+                    <div>
+                        <label for="family">Familienstand</label>
+                        <select id="family" name="family">
+                            <option value="n/a">n/a</option>
+                            <option value="ledig">ledig</option>
+                            <option value="verheiratet">verheiratet</option>
+                            <option value="geschieden">geschieden</option>
+                            <option value="verwitwet">verwitwet</option>
+                        </select>
+                        </div>
+                    <div>
+                        <label for="children">Kinderanzahl</label>
+                        <input type="number" id="children" name="children" placeholder="0">
+                    </div>
+                </div>
+                <div class="flex-container" hidden>
+                    <div>
+                        <select id="question" name="question" id="question">
+                            <option value="Ich hatte noch nie einen Kleingarten.">Ich hatte noch nie einen Kleingarten.</option>
+                            <option value="Ich habe bereits einen Kleingarten gehabt.">Ich habe bereits einen Kleingarten gehabt.</option>
+                            <option value="Ich besitze aktuell einen Kleingarten.">Ich besitze aktuell einen Kleingarten.</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="flex-container">
+                    <div>
+                        <label for="message">Nachricht</label>
+                        <textarea id="message" name="message" cols="40" rows="5" required></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="cf-turnstile" data-sitekey="0x4AAAAAABkptrMr8aWEa-wN"></div>
+            <button type="submit" value="Submit">Senden</button>
+        </form>
+    </div>
+  </section>
+</DefaultLayout>
+
+<script is:inline src="https://challenges.cloudflare.com/turnstile/v0/api.js" defer async></script>
+<script>
+    var items = ['birthdate', 'birthplace', 'nationality', 'zip', 'city', 'street', 'house', 'job', 'family', 'children', 'question'];
+    document.addEventListener("astro:page-load", () => {
+        var select = document.querySelector('#reason');
+
+        select?.addEventListener("change", (event) => {
+            console.log("change");
+
+            if (event.target.value == "Anfrage") {
+                items.forEach(function(id, index) {
+                    var element = document.getElementById(id);
+                    if (element) {
+                        element.removeAttribute("required");
+                        element.removeAttribute("data-error");
+                        var container = document.querySelector("#"+id).closest(".flex-container");
+                        if (container) {
+                            (container as HTMLElement).setAttribute("hidden", "")
+                        }
+                    }
+
+                });
+            }
+            else {
+                items.forEach(function(id, index) {
+                    var element = document.getElementById(id);
+                    if (element) {
+                        element.setAttribute("required", "");
+                        element.setAttribute("data-error", "This field is required.");
+                        var container = document.querySelector("#"+id)?.closest(".flex-container");
+                        if (container) {
+                            (container as HTMLElement).removeAttribute("hidden")
+                        }
+                    }
+                });
+            }
+        });
+    });
+
+    document.addEventListener("astro:before-swap", () => {
+        return;
+    });
+</script>
+
+<style>
+    form {
+        border: 1px solid var(--form-border);
+        border-radius: 8px;
+        background-color: var(--form-background);
+        padding: 15px;
+    }
+
+    .flex-container {
+        display: flex;
+        align-items: stretch;
+    }
+
+    .flex-container > div {
+        text-align: left;
+        margin: 10px;
+        flex: 1;
+    } 
+
+    input, select, textarea {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid var(--form-border);
+        border-radius: 8px;
+        box-sizing: border-box;
+        outline: none;
+    }
+
+    select {
+        -webkit-appearance: none;
+        appearance: none;
+        -moz-appearance: none;
+        background-image: url('@graphics/design/down-arrow.svg');
+        background-repeat: no-repeat;
+        background-size: 14px 14px;
+        background-position: calc(100% - 16px);
+    }
+
+    select option {
+        background: var(--background-color);
+        color: var(--foreground-color);
+    }
+
+    input:focus {
+        border: 3px solid var(--link-hover-color);
+    }
+
+    button[type=submit] {
+        width: 100%;
+        background-color: var(--link-color);
+        color: var(--background-color);
+        padding: 15px;
+        margin: 20px 0px;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+    }
+
+    button[type=submit]:hover {
+        background-color: var(--link-hover-color);
+    }
+
+    #arrow {
+        fill: var(--foreground-color);
+    }
+    </style>
