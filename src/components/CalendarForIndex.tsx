@@ -11,24 +11,22 @@ import googleCalendarPlugin from '@fullcalendar/google-calendar'
 // https://dateutil.readthedocs.io/en/stable/rrule.html
 // https://fullcalendar.io/docs/google-calendar
 
+var count = 0;
 export default function Calendar() {
   return (
     <FullCalendar
       plugins={[ googleCalendarPlugin, rrulePlugin, listPlugin ]}
       googleCalendarApiKey='AIzaSyAdplIqmONF4uGdW8d4ATAoMsfTQYbwYZc'
-      initialView='listYear'
+      initialView='list'
+      duration={{ days: 90 }}
       height="auto"
       weekends={true}
       showNonCurrentDates={false}
       locale={deLocale}
-      buttonText={{
-        month: 'Monat',
-        year: 'Jahr'  
-      }}
       headerToolbar={{
         left: '',
-        center: 'title',
-        right: 'listMonth listYear prev,next'
+        center: '',
+        right: ''
       }}
       listDayFormat={{
         day: '2-digit',
@@ -38,6 +36,11 @@ export default function Calendar() {
       }}
       listDaySideFormat={false}
       allDayText='ganztägig'
+      validRange={function (nowDate) {
+        return {
+          start: nowDate
+        };
+      }}
       eventSources={[
           {
             googleCalendarId: 'kruegersruh@mailbox.org'
@@ -51,6 +54,13 @@ export default function Calendar() {
             className: 'gemeinschaftsarbeit'
           }
         ]
+      }
+      eventDidMount={function (arg) {
+          if (count > 2) {
+            arg.event.remove();
+          }
+          count = count + 1;
+        }
       }
       eventDataTransform={function (eventData) {
         eventData.backgroundColor = '#0b85f7'  

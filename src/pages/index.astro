@@ -7,8 +7,10 @@ import { Icon } from 'astro-icon/components'
 import Counter from '@components/Counter.astro'
 import ContentMedia from '@components/ContentMedia.astro'
 import SponsorBlock from '@components/SponsorBlock.astro'
+import Calendar from '@components/CalendarForIndex.tsx'
 
 import { Image } from 'astro:assets'
+import flyer from '@graphics/design/flyer.jpg'
 import img_roses from '@graphics/design/roses.png'
 import img_garden from '@graphics/design/patrick-federi-vOaUMTTr8YQ-unsplash.jpg'
 
@@ -38,19 +40,9 @@ const currentYear = new Date().getFullYear()
   </section>
   <section class="mt-15 mb-32">
     <div class="container">
-      <Modal
-        class="notify"
-        title="Welcome!"
-      >
-        <p>This is the modal content.</p>
-      </Modal>
-    </div>
-  </section>
-  <section class="mt-15 mb-32">
-    <div class="container">
       <div class="grid grid-cols-1 gap-12 sm:grid-cols-2 md:grid-cols-3">
         <Counter count={currentYear-1911} title="Jahre" sub="seit Vereinsgründung" />
-        <Counter count="130" title="Gärten" sub="auf ungefähr 8 Hektar" />
+        <Counter count="119" title="Gärten" sub="auf ungefähr 8 Hektar" />
         <Counter count="150+" title="Mitglieder" sub="verschiedenster Nationen" />
       </div>
     </div>
@@ -59,12 +51,13 @@ const currentYear = new Date().getFullYear()
   <section class="my-15">
     <div class="container">
       <div class="grid items-center grid-cols-1 gap-24 md:grid-cols-2">
-        <Media src={img_garden.src} ratio="auto" />
+        <Media src={flyer.src}/>
+        
         <div>
-          <h2>Lorem Ipsum.</h2>
-          <p class="text-2xl">
-            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-          </p>
+          <h2>Termine</h2>
+          <div class="container">
+            <Calendar client:load />
+          </div>
         </div>
       </div>
     </div>

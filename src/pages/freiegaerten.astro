@@ -7,8 +7,7 @@ import { Accordion, AccordionItem, Card } from 'accessible-astro-components'
 import { Image, getImage } from 'astro:assets'
 
 import img_default from '@images/mitch-gaiser-IkiaJW5sA9k-unsplash.jpg'
-console.log(img_default);
-const images = import.meta.glob<{ default: ImageMetadata }>('/src/content/images/*.{jpeg,jpg,png,gif}')
+const images = import.meta.glob<{ default: ImageMetadata }>('/src/content/images/*/*')
 
 const data = await fetch("https://opensheet.elk.sh/19ZpR0tDDIygHf2JtfKnFc6NznlwljL05erhcrY0ePUs/FREIE_GAERTEN").then((response) => response.json());
 console.log("w"+ data);
@@ -82,7 +81,7 @@ console.log("w"+ data);
             variant="chevron"
             >
             <p>
-              Hierzu kannst du das bereitgestellte <a href="/kontakt">Kontaktaktformular</a> mit dem Kontaktgrund "Bewerbung" verwenden. Bitte wende dich zur Vereinbarung eines Besichtigungstermins oder zur Klärung weiterer Fragen an Wilfried Oppermann aus dem Vorstand unter +491739130307.
+              Hierzu kannst du das bereitgestellte <a href="/kontakt">Kontaktaktformular</a> mit dem Kontaktgrund "Bewerbung" verwenden. Bitte wende dich zur Vereinbarung eines Besichtigungstermins oder zur Klärung weiterer Fragen an Uwe Metz unter +4917681221787.
             </p>
           </AccordionItem>
         </Accordion>
