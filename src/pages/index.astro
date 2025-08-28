@@ -10,7 +10,7 @@ import SponsorBlock from '@components/SponsorBlock.astro'
 import Calendar from '@components/CalendarForIndex.tsx'
 
 import { Image } from 'astro:assets'
-import flyer from '@graphics/design/flyer.jpg'
+import flyer from '@graphics/design/flyer.png'
 import img_roses from '@graphics/design/roses.png'
 import img_garden from '@graphics/design/patrick-federi-vOaUMTTr8YQ-unsplash.jpg'
 
@@ -51,7 +51,7 @@ const currentYear = new Date().getFullYear()
   <section class="my-15">
     <div class="container">
       <div class="grid items-center grid-cols-1 gap-24 md:grid-cols-2">
-        <Media src={flyer.src}/>
+        <Media src={flyer.src} class="bg-gray-100 dark:bg-white-800 hover:scale-105 transition-transform duration-200"/>
         <div>
           <h2>Termine</h2>
           <div class="container">
