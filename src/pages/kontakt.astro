@@ -3,7 +3,8 @@ import DefaultLayout from '@layouts/DefaultLayout.astro'
 import PageHeader from '@components/PageHeader.astro'
 import { Icon } from 'astro-icon/components'
 import CookieConsent from '@components/CookieConsent.astro';
-//https://flaviocopes.com/using-cloudflare-turnstile-on-a-astro-form/
+// https://flaviocopes.com/using-cloudflare-turnstile-on-a-astro-form/
+// Formspark
 ---
 
 <DefaultLayout title="Kontakt">
@@ -14,7 +15,6 @@ import CookieConsent from '@components/CookieConsent.astro';
     <CookieConsent/>
     <div class="container">
         <form action="https://submit-form.com/Webfrhcc4" method="POST">
-            <form action="https://formspree.io/f/meozjjkj" method="POST">
             <input type="hidden" name="_redirect" value="https://kruegersruh.de/success" />
             <input type="hidden" name="_error" value="https://kruegersruh.de/error" />
             <input type="hidden" name="_append" value="false" />
