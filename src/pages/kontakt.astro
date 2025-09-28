@@ -17,6 +17,8 @@ import CookieConsent from '@components/CookieConsent.astro';
         <form action="https://submit-form.com/Webfrhcc4" method="POST">
             <input type="hidden" name="_redirect" value="https://kruegersruh.de/success" />
             <input type="hidden" name="_error" value="https://kruegersruh.de/error" />
+            <input type="hidden" id="subject" name="_email.subject" value="kruegersruh.de | Kontaktformular" />
+            <input type="hidden" id="sender" name="_email.from" value="kruegersruh.de" />
             <input type="hidden" name="_append" value="false" />
             <div class="container">
                 <div class="flex-container">
@@ -137,6 +139,9 @@ import CookieConsent from '@components/CookieConsent.astro';
 
         select?.addEventListener("change", (event) => {
             console.log("change");
+
+            var subject = document.getElementById("subject");
+            subject.value = "kruegersruh.de | Kontaktformular: " + event.target.value;
 
             if (event.target.value == "Anfrage") {
                 items.forEach(function(id, index) {
