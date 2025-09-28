@@ -40,7 +40,7 @@ export default function Calendar() {
       allDayText='ganztägig'
       eventSources={[
           {
-            googleCalendarId: 'kruegersruh@mailbox.org'
+            googleCalendarId: 'vorstand@kruegersruh.de'
           },
           {
             googleCalendarId: '85fe5fbed40c05300ca9c63ae8365d1c88fb4c806c91b05d517a237ad37324cf@group.calendar.google.com',
