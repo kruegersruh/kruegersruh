@@ -56,7 +56,7 @@ export default function Calendar() {
         ]
       }
       eventDidMount={function (arg) {
-          if (count > 2) {
+          if (count > 4) {
             arg.event.remove();
           }
           count = count + 1;
