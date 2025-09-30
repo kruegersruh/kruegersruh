@@ -61,7 +61,6 @@ export default function Calendar() {
         ]
       }
       eventDataTransform={function (eventData) {
-          eventData.url = "/kalender";
           if (eventData.url?.endsWith('dm9yc3RhbmRAa3J1ZWdlcnNydWguZGU')) {
             eventData.url = "/vorstand";
           }
