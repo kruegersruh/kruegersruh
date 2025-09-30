@@ -39,31 +39,15 @@ export default function Calendar() {
       listDaySideFormat={false}
       allDayText='ganztägig'
       eventSources={[
-        {
-          googleCalendarId: '85fe5fbed40c05300ca9c63ae8365d1c88fb4c806c91b05d517a237ad37324cf@group.calendar.google.com',
-          className: 'festausschuss'
-        }
-      ]
-    }
+          {
+            googleCalendarId: '85fe5fbed40c05300ca9c63ae8365d1c88fb4c806c91b05d517a237ad37324cf@group.calendar.google.com',
+            className: 'festausschuss',
+            backgroundColor: '#f0f70b'
+          }
+        ]
+      }
       eventDataTransform={function (eventData) {
-        eventData.backgroundColor = '#0b85f7'  
-        eventData.url = '/kalender'
-
-        if (eventData.title?.match(new RegExp(['vorstand'].join("|"), "gi"))) {
-          eventData.backgroundColor = '#f70b0b';
-          eventData.url = '/vorstand'
-        }
-
-        if (eventData.title?.match(new RegExp(['fest', 'feier', 'party', 'abend'].join("|"), "gi"))) {
-          eventData.backgroundColor = '#f0f70b';
-          eventData.url = '/festausschuss'
-        }
-
-        if (eventData.title?.match(new RegExp(['gemeinschaftsarbeit'].join("|"), "gi"))) {
-          eventData.backgroundColor = '#124037';
-          eventData.url = '/gemeinschaftsarbeit'
-        }
-
+          eventData.url = "/festausschuss";
         }
       }
       eventClick={function (event) {
