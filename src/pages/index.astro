@@ -17,6 +17,8 @@ import { getCollection } from "astro:content";
 const blog = (await getCollection("blog")).sort((x, y) => y.data.datum.valueOf() - x.data.datum.valueOf());
 const post = (await getCollection("blog")).sort((x, y) => y.data.datum.valueOf() - x.data.datum.valueOf())[0];
 
+const getSeason = d => Math.floor((d.getMonth() / 12 * 4)) % 4;
+const currentSeason = ['winter', 'spring', 'summer', 'autumn'][getSeason(new Date())];
 const currentYear = new Date().getFullYear()
 ---
 
@@ -44,7 +46,7 @@ const currentYear = new Date().getFullYear()
             </slot>
           </h1>
         </div>
-        <Media src={img_season.src}/>
+        <Image src={import(`../assets/graphics/design/${currentSeason}.png`)} alt=""/>
       </div>
     </div>
   </section>
