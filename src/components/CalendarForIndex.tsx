@@ -43,21 +43,21 @@ export default function Calendar() {
       }}
       eventSources={[
         {
-          // Base64: MmJhdGV2Zm41Z2dxMmwzcmtrZzBkdDQ4cW91N2Exc2xAaW1wb3J0LmNhbGVuZGFyLmdvb2dsZS5jb20
+          // Base64: ZmYwMDg2ZjE4ZWYzMGM0MTc2MWFlNjA3OTAxYTlkZDM4ODhmYTM0ZTY0MDhmY2VkOTc4NWNmNWExZjFiNjA4Y0Bncm91cC5jYWxlbmRhci5nb29nbGUuY29t
           className: 'vorstand',
-          googleCalendarId: '2batevfn5ggq2l3rkkg0dt48qou7a1sl@import.calendar.google.com',
+          googleCalendarId: 'ff0086f18ef30c41761ae607901a9dd3888fa34e6408fced9785cf5a1f1b608c@group.calendar.google.com',
           backgroundColor: '#d44245'
         },
         {
-          // Base64: ZWh2aHU0c282cWtuYWZkNWt2dDQzcGVjN3RqbHBmNnJAaW1wb3J0LmNhbGVuZGFyLmdvb2dsZS5jb20
+          // Base64: MzhjYmVjOWU1ZDc0MGZkN2Y0ZTk5MWEzZGZlMjlkMGRiY2QxMzI0N2JlY2Y2ZTU5NjhhMDZiMTk1ZDUwZjMzOUBncm91cC5jYWxlbmRhci5nb29nbGUuY29t
           className: 'festausschuss',
-          googleCalendarId: 'ehvhu4so6qknafd5kvt43pec7tjlpf6r@import.calendar.google.com',
+          googleCalendarId: '38cbec9e5d740fd7f4e991a3dfe29d0dbcd13247becf6e5968a06b195d50f339@group.calendar.google.com',
           backgroundColor: '#fde512'
         },
         {
-          // Base64: ZmI5c2ExaTFvY2wycDZtaTNuYXQ1bWxvYTVzc3VnMnVAaW1wb3J0LmNhbGVuZGFyLmdvb2dsZS5jb20
+          // Base64: YTE1YzY2N2ZiNzkyMzJhZjM2YWYwNjEyMTYwZjQxNzkxZmFmNjJmNWU0NDJmOWVhNGU5N2JmMGE1YjE4Y2Y4ZEBncm91cC5jYWxlbmRhci5nb29nbGUuY29t
           className: 'gemeinschaftsarbeit',
-          googleCalendarId: 'fb9sa1i1ocl2p6mi3nat5mloa5ssug2u@import.calendar.google.com',
+          googleCalendarId: 'a15c667fb79232af36af0612160f41791faf62f5e442f9ea4e97bf0a5b18cf8d@group.calendar.google.com',
           backgroundColor: '#11d075'
           }
         ]
@@ -70,16 +70,16 @@ export default function Calendar() {
         }
       }
       eventDataTransform={function (eventData) {
-        if (eventData.url?.endsWith('MmJhdGV2Zm41Z2dxMmwzcmtrZzBkdDQ4cW91N2Exc2xAaW1wb3J0LmNhbGVuZGFyLmdvb2dsZS5jb20')) {
-          eventData.url = "/vorstand";
+        if (eventData.url?.endsWith('ZmYwMDg2ZjE4ZWYzMGM0MTc2MWFlNjA3OTAxYTlkZDM4ODhmYTM0ZTY0MDhmY2VkOTc4NWNmNWExZjFiNjA4Y0Bncm91cC5jYWxlbmRhci5nb29nbGUuY29t')) {
+           eventData.url = "/vorstand";
         }
-        if (eventData.url?.endsWith('ZWh2aHU0c282cWtuYWZkNWt2dDQzcGVjN3RqbHBmNnJAaW1wb3J0LmNhbGVuZGFyLmdvb2dsZS5jb20')) {
-          eventData.url = "/festausschuss";
+        if (eventData.url?.endsWith('MzhjYmVjOWU1ZDc0MGZkN2Y0ZTk5MWEzZGZlMjlkMGRiY2QxMzI0N2JlY2Y2ZTU5NjhhMDZiMTk1ZDUwZjMzOUBncm91cC5jYWxlbmRhci5nb29nbGUuY29t')) {
+            eventData.url = "/festausschuss";
         }
-        if (eventData.url?.endsWith('ZmI5c2ExaTFvY2wycDZtaTNuYXQ1bWxvYTVzc3VnMnVAaW1wb3J0LmNhbGVuZGFyLmdvb2dsZS5jb20')) {
-          eventData.url = "/gemeinschaftsarbeit";
+        if (eventData.url?.endsWith('YTE1YzY2N2ZiNzkyMzJhZjM2YWYwNjEyMTYwZjQxNzkxZmFmNjJmNWU0NDJmOWVhNGU5N2JmMGE1YjE4Y2Y4ZEBncm91cC5jYWxlbmRhci5nb29nbGUuY29t')) {
+            eventData.url = "/gemeinschaftsarbeit";
+          }
         }
-      }
       }
       eventClick={function (event) {
         if (event.event.url.includes("google.com") ) {

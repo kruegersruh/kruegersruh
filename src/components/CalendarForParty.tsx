@@ -40,9 +40,8 @@ export default function Calendar() {
       allDayText='ganztägig'
       eventSources={[
           {
-            // Base64: ZWh2aHU0c282cWtuYWZkNWt2dDQzcGVjN3RqbHBmNnJAaW1wb3J0LmNhbGVuZGFyLmdvb2dsZS5jb20
             className: 'festausschuss',
-            googleCalendarId: 'ehvhu4so6qknafd5kvt43pec7tjlpf6r@import.calendar.google.com',
+            googleCalendarId: '38cbec9e5d740fd7f4e991a3dfe29d0dbcd13247becf6e5968a06b195d50f339@group.calendar.google.com',
             backgroundColor: '#fde512'
           }
         ]
