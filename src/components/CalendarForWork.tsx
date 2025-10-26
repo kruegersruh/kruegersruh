@@ -40,9 +40,10 @@ export default function Calendar() {
       allDayText='ganztägig'
       eventSources={[
           {
-            googleCalendarId: '2c7448e98c45b3bc920ab96a4645b298a49c2e4ea204f124a70e89e6f6319285@group.calendar.google.com',
+            // Base64: ZmI5c2ExaTFvY2wycDZtaTNuYXQ1bWxvYTVzc3VnMnVAaW1wb3J0LmNhbGVuZGFyLmdvb2dsZS5jb20
             className: 'gemeinschaftsarbeit',
-            backgroundColor: '#124037'
+            googleCalendarId: 'fb9sa1i1ocl2p6mi3nat5mloa5ssug2u@import.calendar.google.com',
+            backgroundColor: '#11d075'
           }
         ]
       }
