@@ -10,8 +10,6 @@ import SponsorBlock from '@components/SponsorBlock.astro'
 import Calendar from '@components/CalendarForIndex.tsx'
 
 import { Image } from 'astro:assets'
-import img_season from '@graphics/design/roses.png'
-import img_garden from '@graphics/design/patrick-federi-vOaUMTTr8YQ-unsplash.jpg'
 
 import { getCollection } from "astro:content";
 const blog = (await getCollection("blog")).sort((x, y) => y.data.datum.valueOf() - x.data.datum.valueOf());
@@ -20,10 +18,13 @@ const post = (await getCollection("blog")).sort((x, y) => y.data.datum.valueOf()
 const getSeason = d => Math.floor((d.getMonth() / 12 * 4)) % 4;
 const currentSeason = ['winter', 'spring', 'summer', 'autumn'][getSeason(new Date())];
 const currentYear = new Date().getFullYear()
+
+const canva = "https://www.canva.com/design/DAG0Ax3vUXI/FNvJHXpoBP0YDmBSz726fw/view?embed"
 ---
 
 <DefaultLayout title="Home">
   <section>
+    <!-- 
     <div class="container">
       <Notification type="error" role="alert">
         <p><b>Am Sonntag, 30.11.2025, um 10 Uhr findet im Vereinshaus eine außerordentliche Mitgliederversammlung statt!</b><br>  
@@ -34,6 +35,7 @@ const currentYear = new Date().getFullYear()
         </p>
       </Notification>
     </div>
+    -->
   </section>
   <section class="hero my-24">
     <div class="container">
@@ -64,7 +66,7 @@ const currentYear = new Date().getFullYear()
     <div class="container">
       <div class="grid items-center grid-cols-1 gap-24 md:grid-cols-2">
         <div style="position: relative; width: 100%; height: 0; padding-top: 141.4286%; padding-bottom: 0; box-shadow: 0 2px 8px 0 rgba(63,69,81,0.16); overflow: hidden; border-radius: 8px; will-change: transform;">
-          <iframe style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; border: none; padding: 0;margin: 0;" src="https://www.canva.com/design/DAG0Ax3vUXI/FNvJHXpoBP0YDmBSz726fw/view?embed"></iframe>
+          <iframe id="canva" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; border: none; padding: 0;margin: 0;" src={canva}></iframe>
         </div>
         <div>
           <h2>Termine</h2>
