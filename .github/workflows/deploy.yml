@@ -7,6 +7,8 @@ on:
   push:
     branches: [ main ]
   # Allows you to run this workflow manually from the Actions tab on GitHub.
+    paths-ignore:
+      - 'src/content/**'
   workflow_dispatch:
   schedule:
     - cron: '* 4,10,16,22 * * *'
