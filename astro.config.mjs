@@ -11,6 +11,14 @@ export default defineConfig({
   compressHTML: true,
   site: 'https://kruegersruh.de',
   integrations: [mdx(), icon(), compress(), react({experimentalReactChildren: true})],
+  plugins: [tailwindcss()],
+  build: {
+        rollupOptions: {
+            external: [
+                "embla-carousel-autoplay"
+            ],
+        }
+    },
   vite: {
     css: {
       preprocessorOptions: {
@@ -21,7 +29,6 @@ export default defineConfig({
         },
       },
     },
-    plugins: [tailwindcss()],
     resolve: {
       alias: {
         '@assets': fileURLToPath(new URL('./src/assets', import.meta.url)),
