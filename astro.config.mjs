@@ -4,8 +4,7 @@ import compress from 'astro-compress'
 import icon from 'astro-icon'
 import tailwindcss from '@tailwindcss/vite'
 import { fileURLToPath } from 'url'
-import react from '@astrojs/react';
-import Autoplay from "embla-carousel-autoplay"
+import react from '@astrojs/react'
 
 // https://astro.build/config
 export default defineConfig({
@@ -22,7 +21,7 @@ export default defineConfig({
         },
       },
     },
-    plugins: [tailwindcss(),Autoplay()],
+    plugins: [tailwindcss()],
     resolve: {
       alias: {
         '@assets': fileURLToPath(new URL('./src/assets', import.meta.url)),
