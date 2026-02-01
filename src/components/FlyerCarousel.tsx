@@ -26,7 +26,7 @@ export default function EventCarousel() {
     <Carousel className="w-full max-w-xl" opts={{loop: true, align: "center"}}>
       <CarouselContent>
          {Array.from({ length: images.length }).map((_, index) => (
-            <CarouselItem key={index} style={{background: 'transparent', border: 'none', padding: '5', margin: '0'}}>
+             <Carousel className="w-full max-w-xl" opts={{loop: true, align: "center",}} plugins={[Autoplay({delay: 5000, stopOnInteraction: true, stopOnMouseEnter: true })]}>
                <img 
                       src={images[index].src}
                       alt={`Flyer`}
