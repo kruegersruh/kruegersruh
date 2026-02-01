@@ -6,7 +6,7 @@ import { Card } from 'accessible-astro-components'
 
 // https://github.com/johny/astro-photo-gallery-example/
 
-const gallery = (await getCollection("gallery")).sort((a, b) => a.data.title.localeCompare(b.data.title));
+const gallery = (await getCollection("gallery")).sort((a, b) => b.data.title.localeCompare(a.data.title));
 ---
 
 <DefaultLayout title="Fotogalerie">
