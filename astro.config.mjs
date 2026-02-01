@@ -10,7 +10,7 @@ import react from '@astrojs/react';
 export default defineConfig({
   compressHTML: true,
   site: 'https://kruegersruh.de',
-  integrations: [mdx(), icon(), compress(), react()],
+  integrations: [mdx(), icon(), compress(), react({experimentalReactChildren: true})],
   vite: {
     css: {
       preprocessorOptions: {
