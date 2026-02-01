@@ -5,7 +5,6 @@ import {
   CarouselNext,
   CarouselPrevious
 } from "@components/shadcn/ui/carousel";
-import { Card, CardContent } from "@components/shadcn/ui/card";
 import Autoplay from "embla-carousel-autoplay"
 
 export async function getImages() {
@@ -21,7 +20,6 @@ export async function getImages() {
   }
 
 const images = await getImages();
-console.log('Debug: ' + images);
 
 export default function EventCarousel() {
   return (
