@@ -5,7 +5,7 @@ import {
   CarouselNext,
   CarouselPrevious
 } from "@components/shadcn/ui/carousel";
-import Autoplay from "./../embla-carousel-autoplay"
+import Autoplay from "embla-carousel-autoplay"
 
 export async function getImages() {
     let images = import.meta.glob<{ default: ImageMetadata }>("@content/flyer/*.{jpeg,jpg,png}");
