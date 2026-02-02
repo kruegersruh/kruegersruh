@@ -4,7 +4,7 @@ excerpt: Vom 01. Juni bis 30. September 2025 ist die Bewässerung bei Temperatur
 datum: 2025-06-01
 cover: '@images/markus-spiske-sFydXGrt5OA-unsplash.jpg'
 
-author: Martina Petersen
+author: Kleingärtnerverein Krügersruh e. V.
 role: Fachberatung
 ---
 
