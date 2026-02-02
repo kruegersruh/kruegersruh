@@ -23,10 +23,10 @@ const images = await getImages();
 
 export default function EventCarousel() {
   return (
-    <Carousel className="w-full max-w-xl" opts={{loop: true, align: "center"}}>
+    <Carousel className="w-full max-w-xl" opts={{loop: true, align: "center",}} plugins={[Autoplay({delay: 5000, stopOnInteraction: true, stopOnMouseEnter: true })]}>
       <CarouselContent>
          {Array.from({ length: images.length }).map((_, index) => (
-             <Carousel className="w-full max-w-xl" opts={{loop: true, align: "center",}} plugins={[Autoplay({delay: 5000, stopOnInteraction: true, stopOnMouseEnter: true })]}>
+            <CarouselItem key={index} style={{background: 'transparent', border: 'none', padding: '5', margin: '0'}}>
                <img 
                       src={images[index].src}
                       alt={`Flyer`}
