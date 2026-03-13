@@ -1,7 +1,17 @@
 ---
 import { Image } from 'astro:assets';
 
-const logos = await Astro.glob(`@graphics/logos/*.png`);
+export async function getImages() {
+    let images = import.meta.glob<{ default: ImageMetadata }>(`@graphics/logos/*.png`);
+  
+    const resolvedImages = await Promise.all(
+      Object.values(images).map((image) => image().then((mod) => mod.default))
+    );
+
+    return resolvedImages;
+  }
+
+const logos = await getImages();
 ---
 
   <section class="py-8 px-8 lg:py-20">
@@ -10,7 +20,7 @@ const logos = await Astro.glob(`@graphics/logos/*.png`);
       <div class="flex flex-wrap items-center justify-center gap-8">
         {
           logos.map((logo) => (
-            <Image src={logo.default} alt="" class="w-30"/> 
+            <Image src={logo} alt="" class="w-30"/> 
           ))
         }
       </div>
