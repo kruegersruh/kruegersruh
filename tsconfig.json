@@ -2,9 +2,12 @@
   "extends": "astro/tsconfigs/strict",
   "include": [
     "**/types.d.ts",
-    "**/*"
+    "**/*",
+    "./worker-configuration.d.ts"
   ],
-  "exclude": ["dist"],
+  "exclude": [
+    "dist"
+  ],
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
@@ -20,10 +23,10 @@
       "@images/*": [
         "src/content/images/*"
       ],
-       "@flyer/*": [
+      "@flyer/*": [
         "src/content/flyer/*"
       ],
-       "@gallery/*": [
+      "@gallery/*": [
         "src/content/gallery/*"
       ]
     },
