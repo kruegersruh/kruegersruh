@@ -15,20 +15,24 @@ export async function getStaticPaths() {
 }
 
 export async function getCover(id: string) {
-    let images = import.meta.glob<{ default: ImageMetadata }>(
-        "@content/gallery/**/*.{jpeg,jpg,png}"
-    );
-  
-    images = Object.fromEntries(
-      Object.entries(images).filter(([key]) => key.includes(id))
-    );
-  
-    const resolvedImages = await Promise.all(
-      Object.values(images).map((image) => image().then((mod) => mod.default))
-    );
+    const allImages = import.meta.glob<{ default: ImageMetadata }>(
+    '../../content/gallery/**/*.{jpeg,jpg,png,webp}', 
+    { eager: true }
+  );
 
-    resolvedImages.sort(() => Math.random() - 0.5);
-    return resolvedImages;
+  // Filter images that are inside the folder named after the album ID
+  const albumImages = Object.entries(allImages)
+    .filter(([path]) => {
+      // Normalize both the file path and the ID to lowercase
+      const lowerPath = path.toLowerCase();
+      const lowerId = id.toLowerCase();
+      
+      // Look for the ID surrounded by slashes to ensure we match the folder name
+      return lowerPath.includes(`/${lowerId}/`);
+    })
+    .map(([_, module]) => module.default);
+
+    return albumImages.sort(() => Math.random() - 0.5);
   }
 
 const { album } = Astro.props;
@@ -45,10 +49,10 @@ const images = await getCover(album.id);
         <div class="text-center my-16 mb-32">
             <div id="gallery" class="container mx-auto sm:columns-2 md:columns-3 lg:columns-4 xl:columns-5" >
             {
-                images.map(async (image) => (
+                images.map((image) => (
                    <a href={image.src}
-                    data-pswp-width={(await getImage({src: image, width: 1920})).attributes.width}
-                    data-pswp-height={(await getImage({src: image, width: 1920})).attributes.height}
+                    data-pswp-width={image.width}
+                    data-pswp-height={image.height}
                     target="_blank"
                     class="px-2 py-2"
                   >
